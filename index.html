@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -425,8 +426,6 @@ required
 </div>
 
 
-<!-- SHIPPING ADDRESS -->
-
 <div
 class="form-group"
 id="address-group"
@@ -445,8 +444,6 @@ required
 
 </div>
 
-
-<!-- DELIVERY / PICKUP -->
 
 <div class="form-group">
 
@@ -468,28 +465,26 @@ Select an option
 Pick up - FREE
 </option>
 
-<option value="0–1 hour from Belmont North NSW 2280 - $5" data-price="5">
-0–1 hour from Belmont North NSW 2280 — $5
+<option value="0–1 hour Drive from Belmont North NSW 2280 - $5" data-price="5">
+0–1 hour Drive from Belmont North NSW 2280 — $5
 </option>
 
-<option value="1–3 hours from Belmont North NSW 2280 - $8" data-price="8">
-1–3 hours from Belmont North NSW 2280 — $8
+<option value="1–3 hours Drive from Belmont North NSW 2280 - $8" data-price="8">
+1–3 hours Drive from Belmont North NSW 2280 — $8
 </option>
 
-<option value="3–5 hours from Belmont North NSW 2280 - $12" data-price="12">
-3–5 hours from Belmont North NSW 2280 — $12
+<option value="3–5 hours Drive from Belmont North NSW 2280 - $12" data-price="12">
+3–5 hours Drive from Belmont North NSW 2280 — $12
 </option>
 
-<option value="5+ hours from Belmont North NSW 2280 - $15" data-price="15">
-5+ hours from Belmont North NSW 2280 — $15
+<option value="5+ hours Drive from Belmont North NSW 2280 - $15" data-price="15">
+5+ hours Drive from Belmont North NSW 2280 — $15
 </option>
 
 </select>
 
 </div>
 
-
-<!-- COLOUR -->
 
 <div class="form-group">
 
@@ -538,8 +533,6 @@ Please note: Colour availability may vary depending on the product.
 </div>
 
 
-<!-- FREE GIFT -->
-
 <div
 class="free-gift-box"
 id="free-gift-box"
@@ -575,8 +568,6 @@ Free BRONTHOR DESIGNS Keychain
 
 </div>
 
-
-<!-- ORDER SUMMARY -->
 
 <div class="form-group">
 
@@ -644,8 +635,6 @@ Submit Order
 </div>
 
 
-<!-- THANK YOU -->
-
 <div id="thank-you">
 
 <div class="thank-you-box">
@@ -694,11 +683,6 @@ Return to Shop
 
 
 <script>
-
-
-// ==============================
-// CART
-// ==============================
 
 let cart = [];
 
@@ -754,10 +738,6 @@ function decreaseQuantity(index) {
 }
 
 
-// ==============================
-// ITEMS TOTAL
-// ==============================
-
 function getItemsTotal() {
 
     let total = 0;
@@ -774,10 +754,6 @@ function getItemsTotal() {
 
 }
 
-
-// ==============================
-// SHIPPING PRICE
-// ==============================
 
 function getShippingPrice() {
 
@@ -831,29 +807,21 @@ function updateAddressField() {
         "Pick up - FREE"
     ) {
 
-        // Hide address
-
         addressGroup.style.display =
             "none";
 
-        // Address is no longer required
-
-        address.required = false;
-
-        // Clear the address
+        address.required =
+            false;
 
         address.value = "";
 
     } else {
 
-        // Show address
-
         addressGroup.style.display =
             "block";
 
-        // Address is required for delivery
-
-        address.required = true;
+        address.required =
+            true;
 
     }
 
@@ -997,14 +965,16 @@ function updateFreeGift() {
         giftBox.style.display =
             "block";
 
-        gift.required = true;
+        gift.required =
+            true;
 
     } else {
 
         giftBox.style.display =
             "none";
 
-        gift.required = false;
+        gift.required =
+            false;
 
         gift.value = "";
 
@@ -1245,8 +1215,6 @@ document
                     "customer-address"
                 );
 
-
-            // Address is only required for delivery
 
             if (
                 shipping.value !==
