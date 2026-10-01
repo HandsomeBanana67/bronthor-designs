@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -423,23 +423,27 @@ footer {
     method="POST"
 >
 
-    <!-- FormSubmit settings -->
     <input type="hidden" name="_subject" value="New Bronthor Designs Order">
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_captcha" value="false">
 
-    <!-- Redirect after order -->
     <input type="hidden" name="_next" id="next-page">
 
-    <!-- Order information sent by email -->
     <input type="hidden" name="Order Summary" id="order-summary">
+
     <input type="hidden" name="Items Total" id="email-items-total">
+
     <input type="hidden" name="Shipping" id="email-shipping">
+
     <input type="hidden" name="Order Total" id="email-order-total">
+
     <input type="hidden" name="Shipping Origin" value="Belmont North NSW 2280">
 
+
     <div class="form-group">
+
         <label for="name">Full Name</label>
+
         <input
             type="text"
             id="name"
@@ -447,10 +451,16 @@ footer {
             placeholder="Enter your full name"
             required
         >
+
     </div>
 
+
     <div class="form-group">
-        <label for="contact">Phone Number / Email Address</label>
+
+        <label for="contact">
+            Phone Number / Email Address
+        </label>
+
         <input
             type="text"
             id="contact"
@@ -458,10 +468,16 @@ footer {
             placeholder="Enter your phone number or email"
             required
         >
+
     </div>
 
+
     <div class="form-group">
-        <label for="address">Shipping Address</label>
+
+        <label for="address">
+            Shipping Address
+        </label>
+
         <input
             type="text"
             id="address"
@@ -469,37 +485,76 @@ footer {
             placeholder="Enter your full shipping address"
             required
         >
+
     </div>
 
+
     <div class="form-group">
+
         <label for="distance">
             Driving Distance From Belmont North NSW 2280
         </label>
 
-        <select id="distance" name="Driving Distance" required>
-            <option value="">Select your distance</option>
-            <option value="0–1 hours - $5 shipping" data-price="5">
+        <select
+            id="distance"
+            name="Driving Distance"
+            required
+        >
+
+            <option value="">
+                Select your distance
+            </option>
+
+            <option
+                value="0–1 hours - $5 shipping"
+                data-price="5"
+            >
                 0–1 hour — $5 shipping
             </option>
-            <option value="1–3 hours - $8 shipping" data-price="8">
+
+            <option
+                value="1–3 hours - $8 shipping"
+                data-price="8"
+            >
                 1–3 hours — $8 shipping
             </option>
-            <option value="3–5 hours - $12 shipping" data-price="12">
+
+            <option
+                value="3–5 hours - $12 shipping"
+                data-price="12"
+            >
                 3–5 hours — $12 shipping
             </option>
-            <option value="5+ hours - $15 shipping" data-price="15">
+
+            <option
+                value="5+ hours - $15 shipping"
+                data-price="15"
+            >
                 5+ hours — $15 shipping
             </option>
+
         </select>
+
     </div>
 
-    <!-- NEW COLOUR SELECTOR -->
+
+    <!-- COLOUR -->
 
     <div class="form-group">
-        <label for="colour">Colour</label>
 
-        <select id="colour" name="Colour" required>
-            <option value="">Select a colour</option>
+        <label for="colour">
+            Colour
+        </label>
+
+        <select
+            id="colour"
+            name="Colour Ordered"
+            required
+        >
+
+            <option value="">
+                Select a colour
+            </option>
 
             <option value="White">
                 White
@@ -520,12 +575,16 @@ footer {
             <option value="Grey Marble">
                 Grey Marble
             </option>
+
         </select>
+
     </div>
+
 
     <p class="note">
         Please select the colour you would like for your order.
     </p>
+
 
     <button
         type="submit"
@@ -561,18 +620,18 @@ footer {
         </p>
 
         <p>
-            We will send you a text or email with the final price
-            of your items and shipping.
+            We will send you a text or email with the final
+            price of your items and shipping.
         </p>
 
         <p>
-            We will also send our bank details so you can transfer
-            the payment to us.
+            We will also send our bank details so you can
+            transfer the payment to us.
         </p>
 
         <p>
-            Once we receive the payment, we will send you a
-            text or email confirming your order.
+            Once we receive the payment, we will send you
+            a text or email confirming your order.
         </p>
 
         <p>
@@ -593,20 +652,25 @@ footer {
 let cart = [];
 
 
-/* ADD PRODUCT TO CART */
+/* ADD PRODUCT */
 
 function addToCart(name, price) {
 
-    const existing = cart.find(item => item.name === name);
+    const existing =
+        cart.find(item => item.name === name);
 
     if (existing) {
+
         existing.quantity++;
+
     } else {
+
         cart.push({
             name: name,
             price: price,
             quantity: 1
         });
+
     }
 
     updateCart();
@@ -620,14 +684,16 @@ function changeQuantity(index, amount) {
     cart[index].quantity += amount;
 
     if (cart[index].quantity <= 0) {
+
         cart.splice(index, 1);
+
     }
 
     updateCart();
 }
 
 
-/* REMOVE PRODUCT */
+/* REMOVE */
 
 function removeItem(index) {
 
@@ -637,7 +703,7 @@ function removeItem(index) {
 }
 
 
-/* CALCULATE ITEM TOTAL */
+/* ITEMS TOTAL */
 
 function getItemsTotal() {
 
@@ -646,17 +712,21 @@ function getItemsTotal() {
             total + (item.price * item.quantity),
         0
     );
+
 }
 
 
-/* CALCULATE SHIPPING */
+/* SHIPPING */
 
 function getShipping() {
 
-    const distance = document.getElementById("distance");
+    const distance =
+        document.getElementById("distance");
 
     if (!distance.value) {
+
         return 0;
+
     }
 
     const selectedOption =
@@ -665,6 +735,7 @@ function getShipping() {
     return Number(
         selectedOption.getAttribute("data-price")
     ) || 0;
+
 }
 
 
@@ -754,7 +825,7 @@ function updateCart() {
 }
 
 
-/* UPDATE TOTALS */
+/* TOTALS */
 
 function updateTotals() {
 
@@ -775,10 +846,11 @@ function updateTotals() {
 
     document.getElementById("order-total").textContent =
         "$" + orderTotal.toFixed(2);
+
 }
 
 
-/* UPDATE SHIPPING WHEN CHANGED */
+/* SHIPPING CHANGE */
 
 document.getElementById("distance").addEventListener(
     "change",
@@ -786,7 +858,7 @@ document.getElementById("distance").addEventListener(
 );
 
 
-/* FORM SUBMISSION */
+/* SUBMIT ORDER */
 
 document.getElementById("order-form").addEventListener(
     "submit",
@@ -801,20 +873,9 @@ document.getElementById("order-form").addEventListener(
             );
 
             return;
+
         }
 
-
-        const itemsTotal =
-            getItemsTotal();
-
-        const shipping =
-            getShipping();
-
-        const orderTotal =
-            itemsTotal + shipping;
-
-
-        /* GET SELECTED COLOUR */
 
         const colour =
             document.getElementById("colour").value;
@@ -829,10 +890,23 @@ document.getElementById("order-form").addEventListener(
             );
 
             return;
+
         }
 
 
-        /* CREATE ORDER SUMMARY */
+        const itemsTotal =
+            getItemsTotal();
+
+        const shipping =
+            getShipping();
+
+        const orderTotal =
+            itemsTotal + shipping;
+
+
+        /*
+        Create a clean order summary.
+        */
 
         let summary = "";
 
@@ -849,29 +923,38 @@ document.getElementById("order-form").addEventListener(
         });
 
 
+        /*
+        Put the colour into the
+        order summary as well.
+        */
+
         summary +=
-            "\nColour: " +
+            "\nCOLOUR ORDERED: " +
             colour;
 
 
-        /* PUT INFORMATION INTO EMAIL */
+        /*
+        Send information to FormSubmit.
+        */
 
         document.getElementById("order-summary").value =
             summary;
 
+
         document.getElementById("email-items-total").value =
             "$" + itemsTotal.toFixed(2);
 
+
         document.getElementById("email-shipping").value =
             "$" + shipping.toFixed(2);
+
 
         document.getElementById("email-order-total").value =
             "$" + orderTotal.toFixed(2);
 
 
         /*
-        Redirect back to this website
-        and show the thank-you page.
+        Redirect to thank-you page.
         */
 
         const currentURL =
@@ -884,7 +967,7 @@ document.getElementById("order-form").addEventListener(
 );
 
 
-/* SHOW THANK-YOU PAGE */
+/* THANK YOU PAGE */
 
 function checkThankYouPage() {
 
@@ -932,8 +1015,6 @@ updateCart();
 
 checkThankYouPage();
 
-
-/* CHECK URL HASH */
 
 window.addEventListener(
     "hashchange",
