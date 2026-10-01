@@ -257,121 +257,84 @@ textarea {
 
 
 <div class="product">
-
 <h3>Christus Statue</h3>
-
 <div class="price">$30.00</div>
-
 <button onclick="addToCart('Christus Statue', 30)">
 Add to Cart
 </button>
-
 </div>
 
 
 <div class="product">
-
 <h3>Moroni Statue</h3>
-
 <div class="price">$30.00</div>
-
 <button onclick="addToCart('Moroni Statue', 30)">
 Add to Cart
 </button>
-
 </div>
 
 
 <div class="product">
-
 <h3>Spiral Fidget</h3>
-
 <div class="price">$5.50</div>
-
 <button onclick="addToCart('Spiral Fidget', 5.50)">
 Add to Cart
 </button>
-
 </div>
 
 
 <div class="product">
-
 <h3>Rocktopus</h3>
-
 <div class="price">$8.00</div>
-
 <button onclick="addToCart('Rocktopus', 8)">
 Add to Cart
 </button>
-
 </div>
 
 
 <div class="product">
-
 <h3>Articulated Legs Bookmark</h3>
-
 <div class="price">$3.00</div>
-
 <button onclick="addToCart('Articulated Legs Bookmark', 3)">
 Add to Cart
 </button>
-
 </div>
 
 
 <div class="product">
-
 <h3>Articulated Dragon</h3>
-
 <div class="price">$25.00</div>
-
 <button onclick="addToCart('Articulated Dragon', 25)">
 Add to Cart
 </button>
-
 </div>
 
 
 <div class="product">
-
 <h3>Flower Vase</h3>
-
 <div class="price">$10.00</div>
-
 <button onclick="addToCart('Flower Vase', 10)">
 Add to Cart
 </button>
-
 </div>
 
 
 <div class="product">
-
 <h3>The 67 Family</h3>
-
 <div class="price">$6.70</div>
-
 <button onclick="addToCart('The 67 Family', 6.70)">
 Add to Cart
 </button>
-
 </div>
 
 
 <div class="product">
-
 <h3>Bronthor Designs Keychain</h3>
-
 <div class="price">$1.00</div>
-
 <button onclick="addToCart('Bronthor Designs Keychain', 1)">
 Add to Cart
 </button>
-
 </div>
-
 
 </div>
 
@@ -381,15 +344,11 @@ Add to Cart
 <h2>Your Cart</h2>
 
 <div id="cart-items">
-
 <p>Your cart is empty.</p>
-
 </div>
 
 <div class="total">
-
 Items Total: $<span id="items-total">0.00</span>
-
 </div>
 
 </div>
@@ -466,7 +425,12 @@ required
 </div>
 
 
-<div class="form-group">
+<!-- SHIPPING ADDRESS -->
+
+<div
+class="form-group"
+id="address-group"
+>
 
 <label for="customer-address">
 Shipping Address
@@ -481,6 +445,8 @@ required
 
 </div>
 
+
+<!-- DELIVERY / PICKUP -->
 
 <div class="form-group">
 
@@ -502,7 +468,7 @@ Select an option
 Pick up - FREE
 </option>
 
-<option value="0–1 hours from Belmont North NSW 2280 - $5" data-price="5">
+<option value="0–1 hour from Belmont North NSW 2280 - $5" data-price="5">
 0–1 hour from Belmont North NSW 2280 — $5
 </option>
 
@@ -522,6 +488,8 @@ Pick up - FREE
 
 </div>
 
+
+<!-- COLOUR -->
 
 <div class="form-group">
 
@@ -570,6 +538,8 @@ Please note: Colour availability may vary depending on the product.
 </div>
 
 
+<!-- FREE GIFT -->
+
 <div
 class="free-gift-box"
 id="free-gift-box"
@@ -605,6 +575,8 @@ Free BRONTHOR DESIGNS Keychain
 
 </div>
 
+
+<!-- ORDER SUMMARY -->
 
 <div class="form-group">
 
@@ -672,6 +644,8 @@ Submit Order
 </div>
 
 
+<!-- THANK YOU -->
+
 <div id="thank-you">
 
 <div class="thank-you-box">
@@ -720,6 +694,11 @@ Return to Shop
 
 
 <script>
+
+
+// ==============================
+// CART
+// ==============================
 
 let cart = [];
 
@@ -775,13 +754,19 @@ function decreaseQuantity(index) {
 }
 
 
+// ==============================
+// ITEMS TOTAL
+// ==============================
+
 function getItemsTotal() {
 
     let total = 0;
 
     cart.forEach(item => {
 
-        total += item.price * item.quantity;
+        total +=
+            item.price *
+            item.quantity;
 
     });
 
@@ -790,13 +775,21 @@ function getItemsTotal() {
 }
 
 
+// ==============================
+// SHIPPING PRICE
+// ==============================
+
 function getShippingPrice() {
 
     const shipping =
-        document.getElementById("shipping");
+        document.getElementById(
+            "shipping"
+        );
 
     if (!shipping.value) {
+
         return 0;
+
     }
 
     const selected =
@@ -811,13 +804,78 @@ function getShippingPrice() {
 }
 
 
+// ==============================
+// PICKUP ADDRESS CONTROL
+// ==============================
+
+function updateAddressField() {
+
+    const shipping =
+        document.getElementById(
+            "shipping"
+        );
+
+    const addressGroup =
+        document.getElementById(
+            "address-group"
+        );
+
+    const address =
+        document.getElementById(
+            "customer-address"
+        );
+
+
+    if (
+        shipping.value ===
+        "Pick up - FREE"
+    ) {
+
+        // Hide address
+
+        addressGroup.style.display =
+            "none";
+
+        // Address is no longer required
+
+        address.required = false;
+
+        // Clear the address
+
+        address.value = "";
+
+    } else {
+
+        // Show address
+
+        addressGroup.style.display =
+            "block";
+
+        // Address is required for delivery
+
+        address.required = true;
+
+    }
+
+}
+
+
+// ==============================
+// CART DISPLAY
+// ==============================
+
 function updateCart() {
 
     const cartItems =
-        document.getElementById("cart-items");
+        document.getElementById(
+            "cart-items"
+        );
 
     const itemsTotal =
-        document.getElementById("items-total");
+        document.getElementById(
+            "items-total"
+        );
+
 
     if (cart.length === 0) {
 
@@ -842,7 +900,8 @@ function updateCart() {
     cart.forEach((item, index) => {
 
         const itemTotal =
-            item.price * item.quantity;
+            item.price *
+            item.quantity;
 
         total += itemTotal;
 
@@ -853,7 +912,9 @@ function updateCart() {
 
             <div>
 
-                <strong>${item.name}</strong>
+                <strong>
+                    ${item.name}
+                </strong>
 
                 <br>
 
@@ -871,9 +932,11 @@ function updateCart() {
                     −
                 </button>
 
+
                 <strong>
                     ${item.quantity}
                 </strong>
+
 
                 <button
                     type="button"
@@ -898,7 +961,8 @@ function updateCart() {
     });
 
 
-    cartItems.innerHTML = html;
+    cartItems.innerHTML =
+        html;
 
     itemsTotal.textContent =
         total.toFixed(2);
@@ -907,6 +971,10 @@ function updateCart() {
 
 }
 
+
+// ==============================
+// FREE GIFT
+// ==============================
 
 function updateFreeGift() {
 
@@ -945,6 +1013,10 @@ function updateFreeGift() {
 }
 
 
+// ==============================
+// ORDER SUMMARY
+// ==============================
+
 function updateSummary() {
 
     const summaryBox =
@@ -971,7 +1043,8 @@ function updateSummary() {
     cart.forEach(item => {
 
         const itemTotal =
-            item.price * item.quantity;
+            item.price *
+            item.quantity;
 
         summary +=
             item.name +
@@ -991,7 +1064,8 @@ function updateSummary() {
         getShippingPrice();
 
     const orderTotal =
-        itemsTotal + shipping;
+        itemsTotal +
+        shipping;
 
 
     const shippingSelect =
@@ -1056,7 +1130,10 @@ function updateSummary() {
 
         summary +=
             "FREE GIFT: " +
-            (gift || "Not selected") +
+            (
+                gift ||
+                "Not selected"
+            ) +
             "\n";
 
     } else {
@@ -1076,13 +1153,27 @@ function updateSummary() {
 }
 
 
+// ==============================
+// SHIPPING CHANGE
+// ==============================
+
 document
     .getElementById("shipping")
     .addEventListener(
         "change",
-        updateSummary
+        function() {
+
+            updateAddressField();
+
+            updateSummary();
+
+        }
     );
 
+
+// ==============================
+// COLOUR CHANGE
+// ==============================
 
 document
     .getElementById("colour")
@@ -1092,6 +1183,10 @@ document
     );
 
 
+// ==============================
+// FREE GIFT CHANGE
+// ==============================
+
 document
     .getElementById("free-gift")
     .addEventListener(
@@ -1100,11 +1195,16 @@ document
     );
 
 
+// ==============================
+// FORM SUBMISSION
+// ==============================
+
 document
     .getElementById("order-form")
     .addEventListener(
         "submit",
         function(event) {
+
 
             if (cart.length === 0) {
 
@@ -1134,6 +1234,33 @@ document
                 );
 
                 shipping.focus();
+
+                return;
+
+            }
+
+
+            const address =
+                document.getElementById(
+                    "customer-address"
+                );
+
+
+            // Address is only required for delivery
+
+            if (
+                shipping.value !==
+                "Pick up - FREE" &&
+                !address.value.trim()
+            ) {
+
+                event.preventDefault();
+
+                alert(
+                    "Please enter your shipping address."
+                );
+
+                address.focus();
 
                 return;
 
@@ -1235,6 +1362,24 @@ document
                 "\n";
 
 
+            if (
+                shipping.value ===
+                "Pick up - FREE"
+            ) {
+
+                summary +=
+                    "SHIPPING ADDRESS: Pickup — no delivery address required\n";
+
+            } else {
+
+                summary +=
+                    "SHIPPING ADDRESS: " +
+                    address.value +
+                    "\n";
+
+            }
+
+
             summary +=
                 "ITEMS TOTAL: $" +
                 itemsTotal.toFixed(2) +
@@ -1318,6 +1463,10 @@ document
         }
     );
 
+
+// ==============================
+// THANK YOU PAGE
+// ==============================
 
 function showThankYouPage() {
 
