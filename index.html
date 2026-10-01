@@ -4,470 +4,938 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bronthor Designs Shop</title>
+<title>Bronthor Designs | Shop</title>
 
 <style>
+/* ==============================
+   BRONTHOR DESIGNS
+   PROFESSIONAL SHOP DESIGN
+================================= */
 
-body {
-    font-family: Arial, sans-serif;
-    background: #111;
-    color: white;
-    margin: 0;
-    padding: 20px;
+* {
+    box-sizing: border-box;
 }
 
-h1, h2 {
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0b0b;
+    color: #ffffff;
+}
+
+.container {
+    width: 92%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* HEADER */
+
+.header {
+    background: #050505;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 28px 0;
     text-align: center;
+}
+
+.logo {
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.tagline {
+    color: #999;
+    margin-top: 8px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* HERO */
+
+.hero {
+    padding: 55px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin: 0 0 12px;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    color: #aaa;
+    font-size: 17px;
+    margin: 0;
+}
+
+/* PRODUCTS */
+
+.section-title {
+    text-align: center;
+    font-size: 28px;
+    margin: 20px 0 30px;
 }
 
 .shop {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-    max-width: 1100px;
-    margin: auto;
+    padding-bottom: 50px;
 }
 
 .product {
-    background: #222;
-    padding: 20px;
-    border-radius: 12px;
+    background: #171717;
+    border: 1px solid #2c2c2c;
+    border-radius: 14px;
+    padding: 24px;
     text-align: center;
-    border: 1px solid #444;
+    transition: 0.2s;
+}
+
+.product:hover {
+    border-color: #555;
+    transform: translateY(-2px);
 }
 
 .product h3 {
-    margin-top: 0;
+    font-size: 19px;
+    margin: 5px 0 15px;
 }
 
 .price {
-    font-size: 20px;
+    font-size: 23px;
     font-weight: bold;
-    margin: 10px;
+    margin-bottom: 18px;
 }
 
-button {
-    background: white;
-    color: black;
+.add-button {
+    width: 100%;
+    padding: 13px;
+    background: #ffffff;
+    color: #000000;
     border: none;
-    padding: 10px 16px;
-    border-radius: 6px;
-    cursor: pointer;
+    border-radius: 8px;
     font-weight: bold;
-    margin: 3px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-button:hover {
-    background: #ddd;
+.add-button:hover {
+    background: #dddddd;
 }
 
-#cart {
-    max-width: 700px;
-    margin: 40px auto;
-    background: #222;
-    padding: 25px;
-    border-radius: 12px;
+/* CART */
+
+.cart-box {
+    background: #151515;
+    border: 1px solid #2c2c2c;
+    border-radius: 16px;
+    padding: 28px;
+    margin: 20px auto 35px;
+    max-width: 800px;
+}
+
+.cart-box h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.empty-cart {
+    text-align: center;
+    color: #888;
+    padding: 20px;
 }
 
 .cart-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 15px;
-    padding: 15px 0;
-    border-bottom: 1px solid #444;
+    padding: 18px 0;
+    border-bottom: 1px solid #292929;
 }
 
-.total {
-    font-size: 18px;
-    margin-top: 12px;
-}
-
-.order-total {
-    font-size: 26px;
+.cart-name {
     font-weight: bold;
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 2px solid #555;
+    margin-bottom: 5px;
 }
 
-form {
-    max-width: 700px;
-    margin: 30px auto;
-    background: #222;
-    padding: 25px;
-    border-radius: 12px;
+.cart-details {
+    color: #999;
+    font-size: 14px;
 }
 
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 15px;
-    box-sizing: border-box;
+.cart-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.small-button {
+    background: #292929;
+    color: white;
+    border: 1px solid #444;
     border-radius: 6px;
-    border: none;
-    font-size: 16px;
+    padding: 7px 11px;
+    cursor: pointer;
+}
+
+.small-button:hover {
+    background: #3a3a3a;
+}
+
+.remove-button {
+    color: #ff7777;
+}
+
+/* TOTALS */
+
+.totals {
+    margin-top: 25px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    color: #bbb;
+}
+
+.total-row.final {
+    border-top: 1px solid #444;
+    margin-top: 10px;
+    padding-top: 18px;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* CHECKOUT */
+
+.checkout {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    background: #151515;
+    border: 1px solid #2c2c2c;
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.checkout h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.checkout-subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 30px;
 }
 
 label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 8px;
     font-weight: bold;
 }
 
-.place-order {
+input,
+textarea,
+select {
     width: 100%;
-    background: white;
-    color: black;
-    font-size: 18px;
-    padding: 15px;
-    margin-top: 10px;
+    background: #0c0c0c;
+    color: white;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 13px;
+    font-size: 16px;
+    outline: none;
 }
 
-#success {
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: white;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.shipping-note {
+    color: #888;
+    font-size: 13px;
+    margin-top: -4px;
+}
+
+/* ORDER BUTTON */
+
+.place-order {
+    width: 100%;
+    margin-top: 28px;
+    padding: 17px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.place-order:hover {
+    background: #dddddd;
+}
+
+/* THANK YOU */
+
+#thankYouPage {
     display: none;
-    max-width: 700px;
-    margin: 40px auto;
-    background: #222;
-    padding: 40px;
-    border-radius: 12px;
+    min-height: 70vh;
+    padding: 70px 20px;
     text-align: center;
 }
 
-#success h2 {
-    font-size: 30px;
+.thank-you-box {
+    max-width: 700px;
+    margin: auto;
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 18px;
+    padding: 45px 30px;
 }
 
-</style>
+.checkmark {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    background: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    font-weight: bold;
+}
 
+.thank-you-box h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.thank-you-box p {
+    color: #aaa;
+    line-height: 1.7;
+}
+
+.order-number {
+    margin: 25px 0;
+    padding: 15px;
+    background: #0b0b0b;
+    border-radius: 8px;
+    color: #ddd;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    border-top: 1px solid #222;
+    padding: 30px;
+    color: #666;
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 31px;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-controls {
+        justify-content: flex-start;
+    }
+
+    .total-row.final {
+        font-size: 21px;
+    }
+
+}
+</style>
 </head>
+
 
 <body>
 
-<h1>BRONTHOR DESIGNS</h1>
 
-<h2>Shop</h2>
+<!-- ==============================
+     HEADER
+================================= -->
 
+<header class="header">
 
-<!-- PRODUCTS -->
-
-<div class="shop">
-
-    <div class="product">
-        <h3>Christus Statue</h3>
-        <div class="price">$30.00</div>
-        <button onclick="addToCart('Christus Statue', 30)">
-            ADD TO CART
-        </button>
+    <div class="logo">
+        BRONTHOR DESIGNS
     </div>
 
-
-    <div class="product">
-        <h3>Moroni Statue</h3>
-        <div class="price">$30.00</div>
-        <button onclick="addToCart('Moroni Statue', 30)">
-            ADD TO CART
-        </button>
+    <div class="tagline">
+        FROM IMAGINATION TO CREATION
     </div>
 
+</header>
 
-    <div class="product">
-        <h3>Spiral Fidget</h3>
-        <div class="price">$5.50</div>
-        <button onclick="addToCart('Spiral Fidget', 5.50)">
-            ADD TO CART
-        </button>
+
+<!-- ==============================
+     MAIN SHOP
+================================= -->
+
+<main id="shopPage">
+
+    <section class="hero">
+
+        <h1>STATUES & FIGURINES</h1>
+
+        <p>
+            Quality 3D printed creations made by Bronthor Designs.
+        </p>
+
+    </section>
+
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Our Products
+        </h2>
+
+
+        <!-- PRODUCTS -->
+
+        <div class="shop">
+
+
+            <div class="product">
+
+                <h3>Christus Statue</h3>
+
+                <div class="price">
+                    $30.00
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="addToCart('Christus Statue', 30)"
+                >
+                    ADD TO CART
+                </button>
+
+            </div>
+
+
+            <div class="product">
+
+                <h3>Moroni Statue</h3>
+
+                <div class="price">
+                    $30.00
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="addToCart('Moroni Statue', 30)"
+                >
+                    ADD TO CART
+                </button>
+
+            </div>
+
+
+            <div class="product">
+
+                <h3>Spiral Fidget</h3>
+
+                <div class="price">
+                    $5.50
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="addToCart('Spiral Fidget', 5.50)"
+                >
+                    ADD TO CART
+                </button>
+
+            </div>
+
+
+            <div class="product">
+
+                <h3>Rocktopus</h3>
+
+                <div class="price">
+                    $8.00
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="addToCart('Rocktopus', 8)"
+                >
+                    ADD TO CART
+                </button>
+
+            </div>
+
+
+            <div class="product">
+
+                <h3>Articulated Legs Bookmark</h3>
+
+                <div class="price">
+                    $3.00
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="addToCart('Articulated Legs Bookmark', 3)"
+                >
+                    ADD TO CART
+                </button>
+
+            </div>
+
+
+            <div class="product">
+
+                <h3>Articulated Dragon</h3>
+
+                <div class="price">
+                    $25.00
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="addToCart('Articulated Dragon', 25)"
+                >
+                    ADD TO CART
+                </button>
+
+            </div>
+
+
+            <div class="product">
+
+                <h3>Flower Vase</h3>
+
+                <div class="price">
+                    $10.00
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="addToCart('Flower Vase', 10)"
+                >
+                    ADD TO CART
+                </button>
+
+            </div>
+
+
+            <div class="product">
+
+                <h3>The 67 Family</h3>
+
+                <div class="price">
+                    $6.70
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="addToCart('The 67 Family', 6.70)"
+                >
+                    ADD TO CART
+                </button>
+
+            </div>
+
+
+            <div class="product">
+
+                <h3>Bronthor Designs Keychain</h3>
+
+                <div class="price">
+                    $1.00
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="addToCart('Bronthor Designs Keychain', 1)"
+                >
+                    ADD TO CART
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ==============================
+             CART
+        ================================= -->
+
+        <section class="cart-box">
+
+            <h2>
+                Your Cart
+            </h2>
+
+            <div id="cartItems">
+
+                <div class="empty-cart">
+                    Your cart is empty.
+                </div>
+
+            </div>
+
+
+            <div class="totals">
+
+                <div class="total-row">
+
+                    <span>
+                        Items Total
+                    </span>
+
+                    <span>
+                        $<span id="itemsTotal">0.00</span>
+                    </span>
+
+                </div>
+
+
+                <div class="total-row">
+
+                    <span>
+                        Shipping
+                    </span>
+
+                    <span>
+                        $<span id="shippingTotal">0.00</span>
+                    </span>
+
+                </div>
+
+
+                <div class="total-row final">
+
+                    <span>
+                        ORDER TOTAL
+                    </span>
+
+                    <span>
+                        $<span id="orderTotal">0.00</span>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             CHECKOUT
+        ================================= -->
+
+        <section class="checkout">
+
+            <h2>
+                Checkout
+            </h2>
+
+            <p class="checkout-subtitle">
+                Enter your details below to submit your order.
+            </p>
+
+
+            <form
+                action="https://formsubmit.co/ormsbybronson@gmail.com"
+                method="POST"
+                id="orderForm"
+            >
+
+
+                <!-- FORMSUBMIT SETTINGS -->
+
+                <input
+                    type="hidden"
+                    name="_subject"
+                    value="New Bronthor Designs Order"
+                >
+
+                <input
+                    type="hidden"
+                    name="_template"
+                    value="table"
+                >
+
+                <input
+                    type="hidden"
+                    name="_captcha"
+                    value="false"
+                >
+
+                <!--
+                This keeps the customer on your website
+                after the order is submitted.
+                -->
+
+                <input
+                    type="hidden"
+                    name="_next"
+                    id="nextPage"
+                    value=""
+                >
+
+
+                <!-- ORDER INFORMATION -->
+
+                <input
+                    type="hidden"
+                    name="Order Summary"
+                    id="orderSummary"
+                >
+
+                <input
+                    type="hidden"
+                    name="Items Total"
+                    id="emailItemsTotal"
+                >
+
+                <input
+                    type="hidden"
+                    name="Shipping"
+                    id="emailShipping"
+                >
+
+                <input
+                    type="hidden"
+                    name="Order Total"
+                    id="emailOrderTotal"
+                >
+
+                <input
+                    type="hidden"
+                    name="Shipping Origin"
+                    value="Belmont North NSW 2280"
+                >
+
+
+                <!-- CUSTOMER DETAILS -->
+
+                <label for="fullName">
+                    Full Name
+                </label>
+
+                <input
+                    id="fullName"
+                    type="text"
+                    name="Full Name"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+
+                <label for="contact">
+                    Phone Number or Email Address
+                </label>
+
+                <input
+                    id="contact"
+                    type="text"
+                    name="Contact Details"
+                    placeholder="Enter your phone number or email"
+                    required
+                >
+
+
+                <label for="address">
+                    Shipping Address
+                </label>
+
+                <textarea
+                    id="address"
+                    name="Shipping Address"
+                    rows="4"
+                    placeholder="Enter your shipping address"
+                    required
+                ></textarea>
+
+
+                <!-- SHIPPING -->
+
+                <label for="shipping">
+                    Delivery Distance
+                </label>
+
+                <p class="shipping-note">
+                    Shipping is calculated from Belmont North NSW 2280.
+                </p>
+
+                <select
+                    id="shipping"
+                    name="Driving Time / Shipping"
+                    required
+                >
+
+                    <option
+                        value=""
+                        data-price="0"
+                    >
+                        Select your driving distance
+                    </option>
+
+
+                    <option
+                        value="0 - 1 hour drive — $5"
+                        data-price="5"
+                    >
+                        0 - 1 hour drive — +$5.00
+                    </option>
+
+
+                    <option
+                        value="1 - 3 hour drive — $8"
+                        data-price="8"
+                    >
+                        1 - 3 hour drive — +$8.00
+                    </option>
+
+
+                    <option
+                        value="3 - 5 hour drive — $12"
+                        data-price="12"
+                    >
+                        3 - 5 hour drive — +$12.00
+                    </option>
+
+
+                    <option
+                        value="5+ hour drive — $15"
+                        data-price="15"
+                    >
+                        5+ hour drive — +$15.00
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="place-order"
+                >
+                    PLACE ORDER
+                </button>
+
+
+            </form>
+
+        </section>
+
     </div>
 
+</main>
 
-    <div class="product">
-        <h3>Rocktopus</h3>
-        <div class="price">$8.00</div>
-        <button onclick="addToCart('Rocktopus', 8)">
-            ADD TO CART
-        </button>
+
+<!-- ==============================
+     THANK YOU PAGE
+================================= -->
+
+<section id="thankYouPage">
+
+    <div class="thank-you-box">
+
+        <div class="checkmark">
+            ✓
+        </div>
+
+
+        <h2>
+            Thank You for Your Order!
+        </h2>
+
+
+        <p>
+            Your order has been submitted successfully.
+        </p>
+
+
+        <p>
+            We will contact you by text or email with the
+            final price of your items and shipping.
+        </p>
+
+
+        <p>
+            We will also provide our bank details so you can
+            transfer your payment.
+        </p>
+
+
+        <p>
+            Once we receive your payment, we will send you
+            a confirmation message.
+        </p>
+
+
+        <div class="order-number">
+
+            Thank you for supporting
+            <strong>Bronthor Designs</strong>!
+
+        </div>
+
     </div>
 
+</section>
 
-    <div class="product">
-        <h3>Articulated Legs Bookmark</h3>
-        <div class="price">$3.00</div>
-        <button onclick="addToCart('Articulated Legs Bookmark', 3)">
-            ADD TO CART
-        </button>
-    </div>
 
+<!-- FOOTER -->
 
-    <div class="product">
-        <h3>Articulated Dragon</h3>
-        <div class="price">$25.00</div>
-        <button onclick="addToCart('Articulated Dragon', 25)">
-            ADD TO CART
-        </button>
-    </div>
+<footer>
 
+    © 2026 Bronthor Designs.
+    From Imagination To Creation.
 
-    <div class="product">
-        <h3>Flower Vase</h3>
-        <div class="price">$10.00</div>
-        <button onclick="addToCart('Flower Vase', 10)">
-            ADD TO CART
-        </button>
-    </div>
-
-
-    <div class="product">
-        <h3>The 67 Family</h3>
-        <div class="price">$6.70</div>
-        <button onclick="addToCart('The 67 Family', 6.70)">
-            ADD TO CART
-        </button>
-    </div>
-
-
-    <div class="product">
-        <h3>Bronthor Designs Keychain</h3>
-        <div class="price">$1.00</div>
-        <button onclick="addToCart('Bronthor Designs Keychain', 1)">
-            ADD TO CART
-        </button>
-    </div>
-
-</div>
-
-
-<!-- CART -->
-
-<div id="cart">
-
-    <h2>Your Cart</h2>
-
-    <div id="cartItems">
-        Your cart is empty.
-    </div>
-
-
-    <div class="total">
-        Items Total:
-        $<span id="itemsTotal">0.00</span>
-    </div>
-
-
-    <div class="total">
-        Shipping:
-        $<span id="shippingTotal">0.00</span>
-    </div>
-
-
-    <div class="order-total">
-        ORDER TOTAL:
-        $<span id="orderTotal">0.00</span>
-    </div>
-
-</div>
-
-
-<!-- CHECKOUT -->
-
-<form
-    action="https://formsubmit.co/ormsbybronson@gmail.com"
-    method="POST"
-    id="orderForm"
->
-
-
-    <h2>Checkout</h2>
-
-
-    <!-- FormSubmit settings -->
-
-    <input
-        type="hidden"
-        name="_subject"
-        value="New Bronthor Designs Order"
-    >
-
-    <input
-        type="hidden"
-        name="_template"
-        value="table"
-    >
-
-    <input
-        type="hidden"
-        name="_captcha"
-        value="false"
-    >
-
-
-    <!-- Order information -->
-
-    <input
-        type="hidden"
-        name="Order Summary"
-        id="orderSummary"
-    >
-
-    <input
-        type="hidden"
-        name="Items Total"
-        id="emailItemsTotal"
-    >
-
-    <input
-        type="hidden"
-        name="Shipping"
-        id="emailShipping"
-    >
-
-    <input
-        type="hidden"
-        name="Order Total"
-        id="emailOrderTotal"
-    >
-
-    <input
-        type="hidden"
-        name="Shipping Origin"
-        value="Belmont North NSW 2280"
-    >
-
-
-    <!-- Customer details -->
-
-    <label>
-        Full Name
-    </label>
-
-    <input
-        type="text"
-        name="Full Name"
-        required
-        placeholder="Enter your full name"
-    >
-
-
-    <label>
-        Phone Number or Email Address
-    </label>
-
-    <input
-        type="text"
-        name="Contact Details"
-        required
-        placeholder="Enter your phone number or email"
-    >
-
-
-    <label>
-        Shipping Address
-    </label>
-
-    <textarea
-        name="Shipping Address"
-        rows="4"
-        required
-        placeholder="Enter your shipping address"
-    ></textarea>
-
-
-    <label>
-        How far are you from Belmont North NSW 2280?
-    </label>
-
-
-    <select
-        name="Driving Time / Shipping"
-        id="shipping"
-        required
-    >
-
-        <option value="">
-            Select your distance
-        </option>
-
-        <option
-            value="0–1 hour — $5"
-            data-price="5"
-        >
-            0–1 hour — $5
-        </option>
-
-        <option
-            value="1–3 hours — $8"
-            data-price="8"
-        >
-            1–3 hours — $8
-        </option>
-
-        <option
-            value="3–5 hours — $12"
-            data-price="12"
-        >
-            3–5 hours — $12
-        </option>
-
-        <option
-            value="5+ hours — $15"
-            data-price="15"
-        >
-            5+ hours — $15
-        </option>
-
-    </select>
-
-
-    <button
-        type="submit"
-        class="place-order"
-    >
-        PLACE ORDER
-    </button>
-
-</form>
-
-
-<!-- SUCCESS MESSAGE -->
-
-<div id="success">
-
-    <h2>
-        Thank You for Your Order!
-    </h2>
-
-    <p>
-        Thank you for submitting your order to Bronthor Designs.
-    </p>
-
-    <p>
-        We will contact you by text or email with the final price
-        of your items and shipping.
-    </p>
-
-    <p>
-        We will also provide our bank details so you can transfer
-        the payment.
-    </p>
-
-    <p>
-        Once we receive your payment, we will send you a confirmation
-        message.
-    </p>
-
-    <p>
-        Thank you for supporting Bronthor Designs!
-    </p>
-
-</div>
+</footer>
 
 
 <script>
 
-/* =========================
-   CART
-========================= */
+/* ==========================================
+   CART SYSTEM
+========================================== */
 
 let cart = [];
 
+
+/* ADD TO CART */
 
 function addToCart(name, price) {
 
@@ -482,9 +950,13 @@ function addToCart(name, price) {
     } else {
 
         cart.push({
+
             name: name,
+
             price: price,
+
             quantity: 1
+
         });
 
     }
@@ -495,9 +967,7 @@ function addToCart(name, price) {
 }
 
 
-/* =========================
-   REMOVE ITEM
-========================= */
+/* REMOVE ITEM */
 
 function removeFromCart(index) {
 
@@ -508,9 +978,7 @@ function removeFromCart(index) {
 }
 
 
-/* =========================
-   CHANGE QUANTITY
-========================= */
+/* CHANGE QUANTITY */
 
 function changeQuantity(index, amount) {
 
@@ -529,9 +997,7 @@ function changeQuantity(index, amount) {
 }
 
 
-/* =========================
-   ITEMS TOTAL
-========================= */
+/* GET ITEM TOTAL */
 
 function getItemsTotal() {
 
@@ -541,7 +1007,8 @@ function getItemsTotal() {
     cart.forEach(item => {
 
         total +=
-            item.price * item.quantity;
+            item.price *
+            item.quantity;
 
     });
 
@@ -551,9 +1018,7 @@ function getItemsTotal() {
 }
 
 
-/* =========================
-   SHIPPING
-========================= */
+/* GET SHIPPING PRICE */
 
 function getShipping() {
 
@@ -571,22 +1036,24 @@ function getShipping() {
     }
 
 
-    const selected =
+    const selectedOption =
         shippingSelect.options[
             shippingSelect.selectedIndex
         ];
 
 
     return (
-        parseFloat(selected.dataset.price) || 0
+        parseFloat(
+            selectedOption.getAttribute(
+                "data-price"
+            )
+        ) || 0
     );
 
 }
 
 
-/* =========================
-   UPDATE TOTAL
-========================= */
+/* UPDATE TOTALS */
 
 function updateTotal() {
 
@@ -622,9 +1089,7 @@ function updateTotal() {
 }
 
 
-/* =========================
-   UPDATE CART
-========================= */
+/* UPDATE CART DISPLAY */
 
 function updateCart() {
 
@@ -636,8 +1101,13 @@ function updateCart() {
 
     if (cart.length === 0) {
 
-        cartItems.innerHTML =
-            "Your cart is empty.";
+        cartItems.innerHTML = `
+
+            <div class="empty-cart">
+                Your cart is empty.
+            </div>
+
+        `;
 
     } else {
 
@@ -654,69 +1124,70 @@ function updateCart() {
 
                 html += `
 
-                <div class="cart-item">
+                    <div class="cart-item">
 
-                    <div>
+                        <div>
 
-                        <strong>
-                            ${item.name}
-                        </strong>
+                            <div class="cart-name">
+                                ${item.name}
+                            </div>
 
-                        <br>
+                            <div class="cart-details">
+                                $${item.price.toFixed(2)}
+                                ×
+                                ${item.quantity}
+                                =
+                                $${subtotal.toFixed(2)}
+                            </div>
 
-                        $${item.price.toFixed(2)}
-                        × ${item.quantity}
+                        </div>
 
-                        <br>
 
-                        Subtotal:
-                        $${subtotal.toFixed(2)}
+                        <div class="cart-controls">
+
+                            <button
+                                type="button"
+                                class="small-button"
+                                onclick="
+                                    changeQuantity(
+                                        ${index},
+                                        1
+                                    )
+                                "
+                            >
+                                +
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="small-button"
+                                onclick="
+                                    changeQuantity(
+                                        ${index},
+                                        -1
+                                    )
+                                "
+                            >
+                                −
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="small-button remove-button"
+                                onclick="
+                                    removeFromCart(
+                                        ${index}
+                                    )
+                                "
+                            >
+                                REMOVE
+                            </button>
+
+                        </div>
 
                     </div>
-
-
-                    <div>
-
-                        <button
-                            type="button"
-                            onclick="
-                                changeQuantity(
-                                    ${index},
-                                    1
-                                )
-                            "
-                        >
-                            +
-                        </button>
-
-
-                        <button
-                            type="button"
-                            onclick="
-                                changeQuantity(
-                                    ${index},
-                                    -1
-                                )
-                            "
-                        >
-                            −
-                        </button>
-
-
-                        <button
-                            type="button"
-                            onclick="
-                                removeFromCart(
-                                    ${index}
-                                )
-                            "
-                        >
-                            REMOVE
-                        </button>
-
-                    </div>
-
-                </div>
 
                 `;
 
@@ -735,9 +1206,9 @@ function updateCart() {
 }
 
 
-/* =========================
-   SHIPPING CHANGED
-========================= */
+/* ==========================================
+   SHIPPING CHANGES
+========================================== */
 
 document
     .getElementById("shipping")
@@ -745,15 +1216,20 @@ document
         "change",
         function() {
 
+            /*
+             * This immediately adds the selected
+             * shipping price to the order total.
+             */
+
             updateTotal();
 
         }
     );
 
 
-/* =========================
-   PLACE ORDER
-========================= */
+/* ==========================================
+   FORM SUBMISSION
+========================================== */
 
 document
     .getElementById("orderForm")
@@ -762,18 +1238,22 @@ document
         function(e) {
 
 
+            /* Make sure there is something in the cart */
+
             if (cart.length === 0) {
 
                 e.preventDefault();
 
                 alert(
-                    "Please add at least one item to your cart."
+                    "Please add at least one item to your cart before placing your order."
                 );
 
                 return;
 
             }
 
+
+            /* Get totals */
 
             const itemsTotal =
                 getItemsTotal();
@@ -786,6 +1266,8 @@ document
             const finalTotal =
                 itemsTotal + shipping;
 
+
+            /* Create order summary */
 
             let orderText = "";
 
@@ -802,6 +1284,8 @@ document
 
             });
 
+
+            /* Put information into hidden fields */
 
             document.getElementById(
                 "orderSummary"
@@ -829,11 +1313,68 @@ document
                 "$" +
                 finalTotal.toFixed(2);
 
+
+            /*
+             * Create a thank-you page URL.
+             *
+             * FormSubmit will redirect here after
+             * successfully sending the email.
+             */
+
+            const thankYouURL =
+                window.location.href.split("?")[0]
+                + "#thank-you";
+
+
+            document.getElementById(
+                "nextPage"
+            ).value =
+                thankYouURL;
+
         }
     );
 
 
-/* Start the totals at $0.00 */
+/* ==========================================
+   THANK YOU PAGE
+========================================== */
+
+function showThankYouPage() {
+
+    document.getElementById(
+        "shopPage"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "thankYouPage"
+    ).style.display = "block";
+
+
+    window.scrollTo(
+        0,
+        0
+    );
+
+}
+
+
+/* Check if the customer has been redirected
+   back to the thank-you page */
+
+if (
+    window.location.hash ===
+    "#thank-you"
+) {
+
+    showThankYouPage();
+
+}
+
+
+/* ==========================================
+   INITIAL LOAD
+========================================== */
 
 updateCart();
 
