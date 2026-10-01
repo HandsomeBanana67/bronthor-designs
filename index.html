@@ -1,12 +1,13 @@
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Bronthor Designs</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -242,7 +243,30 @@ select:focus {
 .note {
     color: #888;
     font-size: 13px;
-    margin-top: 10px;
+    margin-top: 8px;
+}
+
+/* FREE GIFT */
+
+.free-gift-box {
+    display: none;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #171717;
+    border: 1px solid #444;
+    border-radius: 12px;
+}
+
+.free-gift-box h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.free-gift-box p {
+    color: #aaa;
+    margin-bottom: 15px;
+    font-size: 14px;
 }
 
 #thank-you {
@@ -292,6 +316,7 @@ footer {
 }
 
 @media (max-width: 600px) {
+
     .hero h1 {
         font-size: 32px;
     }
@@ -304,118 +329,283 @@ footer {
     .quantity {
         margin-top: 5px;
     }
+
 }
+
 </style>
 </head>
 
 <body>
 
+
 <div id="main-page">
 
 <header>
-    <div class="logo">BRONTHOR DESIGNS</div>
-    <div class="tagline">From Imagination To Creation</div>
+
+    <div class="logo">
+        BRONTHOR DESIGNS
+    </div>
+
+    <div class="tagline">
+        From Imagination To Creation
+    </div>
+
 </header>
 
+
 <section class="hero">
-    <h1>STATUES & FIGURINES</h1>
-    <p>Professionally 3D printed creations made by Bronthor Designs.</p>
+
+    <h1>
+        STATUES & FIGURINES
+    </h1>
+
+    <p>
+        Professionally 3D printed creations made by Bronthor Designs.
+    </p>
+
 </section>
+
 
 <div class="container">
 
-<h2 class="section-title">Our Products</h2>
+
+<h2 class="section-title">
+    Our Products
+</h2>
+
 
 <div class="products">
 
-    <div class="product">
-        <h3>Christus Statue</h3>
-        <div class="price">$30.00</div>
-        <button onclick="addToCart('Christus Statue', 30)">Add to Cart</button>
-    </div>
 
     <div class="product">
-        <h3>Moroni Statue</h3>
-        <div class="price">$30.00</div>
-        <button onclick="addToCart('Moroni Statue', 30)">Add to Cart</button>
+
+        <h3>
+            Christus Statue
+        </h3>
+
+        <div class="price">
+            $30.00
+        </div>
+
+        <button onclick="addToCart('Christus Statue', 30)">
+            Add to Cart
+        </button>
+
     </div>
 
-    <div class="product">
-        <h3>Spiral Fidget</h3>
-        <div class="price">$5.50</div>
-        <button onclick="addToCart('Spiral Fidget', 5.50)">Add to Cart</button>
-    </div>
 
     <div class="product">
-        <h3>Rocktopus</h3>
-        <div class="price">$8.00</div>
-        <button onclick="addToCart('Rocktopus', 8)">Add to Cart</button>
+
+        <h3>
+            Moroni Statue
+        </h3>
+
+        <div class="price">
+            $30.00
+        </div>
+
+        <button onclick="addToCart('Moroni Statue', 30)">
+            Add to Cart
+        </button>
+
     </div>
 
-    <div class="product">
-        <h3>Articulated Legs Bookmark</h3>
-        <div class="price">$3.00</div>
-        <button onclick="addToCart('Articulated Legs Bookmark', 3)">Add to Cart</button>
-    </div>
 
     <div class="product">
-        <h3>Articulated Dragon</h3>
-        <div class="price">$25.00</div>
-        <button onclick="addToCart('Articulated Dragon', 25)">Add to Cart</button>
+
+        <h3>
+            Spiral Fidget
+        </h3>
+
+        <div class="price">
+            $5.50
+        </div>
+
+        <button onclick="addToCart('Spiral Fidget', 5.50)">
+            Add to Cart
+        </button>
+
     </div>
 
-    <div class="product">
-        <h3>Flower Vase</h3>
-        <div class="price">$10.00</div>
-        <button onclick="addToCart('Flower Vase', 10)">Add to Cart</button>
-    </div>
 
     <div class="product">
-        <h3>The 67 Family</h3>
-        <div class="price">$6.70</div>
-        <button onclick="addToCart('The 67 Family', 6.70)">Add to Cart</button>
+
+        <h3>
+            Rocktopus
+        </h3>
+
+        <div class="price">
+            $8.00
+        </div>
+
+        <button onclick="addToCart('Rocktopus', 8)">
+            Add to Cart
+        </button>
+
     </div>
 
+
     <div class="product">
-        <h3>Bronthor Designs Keychain</h3>
-        <div class="price">$1.00</div>
-        <button onclick="addToCart('Bronthor Designs Keychain', 1)">Add to Cart</button>
+
+        <h3>
+            Articulated Legs Bookmark
+        </h3>
+
+        <div class="price">
+            $3.00
+        </div>
+
+        <button onclick="addToCart('Articulated Legs Bookmark', 3)">
+            Add to Cart
+        </button>
+
     </div>
+
+
+    <div class="product">
+
+        <h3>
+            Articulated Dragon
+        </h3>
+
+        <div class="price">
+            $25.00
+        </div>
+
+        <button onclick="addToCart('Articulated Dragon', 25)">
+            Add to Cart
+        </button>
+
+    </div>
+
+
+    <div class="product">
+
+        <h3>
+            Flower Vase
+        </h3>
+
+        <div class="price">
+            $10.00
+        </div>
+
+        <button onclick="addToCart('Flower Vase', 10)">
+            Add to Cart
+        </button>
+
+    </div>
+
+
+    <div class="product">
+
+        <h3>
+            The 67 Family
+        </h3>
+
+        <div class="price">
+            $6.70
+        </div>
+
+        <button onclick="addToCart('The 67 Family', 6.70)">
+            Add to Cart
+        </button>
+
+    </div>
+
+
+    <div class="product">
+
+        <h3>
+            Bronthor Designs Keychain
+        </h3>
+
+        <div class="price">
+            $1.00
+        </div>
+
+        <button onclick="addToCart('Bronthor Designs Keychain', 1)">
+            Add to Cart
+        </button>
+
+    </div>
+
 
 </div>
+
+
+<!-- CART -->
 
 <div class="cart">
 
-    <h2>Your Cart</h2>
+    <h2>
+        Your Cart
+    </h2>
+
 
     <div id="cart-items">
-        <p style="color:#888;">Your cart is empty.</p>
+
+        <p style="color:#888;">
+            Your cart is empty.
+        </p>
+
     </div>
+
 
     <div class="totals">
 
-        <div class="total-row">
-            <span>Items Total</span>
-            <span id="items-total">$0.00</span>
-        </div>
 
         <div class="total-row">
-            <span>Shipping</span>
-            <span id="shipping-total">$0.00</span>
+
+            <span>
+                Items Total
+            </span>
+
+            <span id="items-total">
+                $0.00
+            </span>
+
         </div>
+
+
+        <div class="total-row">
+
+            <span>
+                Shipping
+            </span>
+
+            <span id="shipping-total">
+                $0.00
+            </span>
+
+        </div>
+
 
         <div class="final-total">
-            <span>ORDER TOTAL</span>
-            <span id="order-total">$0.00</span>
+
+            <span>
+                ORDER TOTAL
+            </span>
+
+            <span id="order-total">
+                $0.00
+            </span>
+
         </div>
+
 
     </div>
 
 </div>
 
+
+<!-- CHECKOUT -->
+
 <div class="checkout">
 
-<h2>Checkout</h2>
+<h2>
+    Checkout
+</h2>
+
 
 <form
     id="order-form"
@@ -423,184 +613,326 @@ footer {
     method="POST"
 >
 
-    <input type="hidden" name="_subject" value="New Bronthor Designs Order">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
 
-    <input type="hidden" name="_next" id="next-page">
+<!-- FORMSUBMIT SETTINGS -->
 
-    <input type="hidden" name="Order Summary" id="order-summary">
+<input
+    type="hidden"
+    name="_subject"
+    value="New Bronthor Designs Order"
+>
 
-    <input type="hidden" name="Items Total" id="email-items-total">
+<input
+    type="hidden"
+    name="_template"
+    value="table"
+>
 
-    <input type="hidden" name="Shipping" id="email-shipping">
+<input
+    type="hidden"
+    name="_captcha"
+    value="false"
+>
 
-    <input type="hidden" name="Order Total" id="email-order-total">
+<input
+    type="hidden"
+    name="_next"
+    id="next-page"
+>
 
-    <input type="hidden" name="Shipping Origin" value="Belmont North NSW 2280">
+
+<!-- ORDER INFORMATION -->
+
+<input
+    type="hidden"
+    name="Order Summary"
+    id="order-summary"
+>
+
+<input
+    type="hidden"
+    name="Items Total"
+    id="email-items-total"
+>
+
+<input
+    type="hidden"
+    name="Shipping"
+    id="email-shipping"
+>
+
+<input
+    type="hidden"
+    name="Order Total"
+    id="email-order-total"
+>
+
+<input
+    type="hidden"
+    name="Shipping Origin"
+    value="Belmont North NSW 2280"
+>
 
 
-    <div class="form-group">
+<!-- NAME -->
 
-        <label for="name">Full Name</label>
+<div class="form-group">
 
-        <input
-            type="text"
-            id="name"
-            name="Full Name"
-            placeholder="Enter your full name"
-            required
+    <label for="name">
+        Full Name
+    </label>
+
+    <input
+        type="text"
+        id="name"
+        name="Full Name"
+        placeholder="Enter your full name"
+        required
+    >
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="form-group">
+
+    <label for="contact">
+        Phone Number / Email Address
+    </label>
+
+    <input
+        type="text"
+        id="contact"
+        name="Phone Number / Email"
+        placeholder="Enter your phone number or email"
+        required
+    >
+
+</div>
+
+
+<!-- ADDRESS -->
+
+<div class="form-group">
+
+    <label for="address">
+        Shipping Address
+    </label>
+
+    <input
+        type="text"
+        id="address"
+        name="Shipping Address"
+        placeholder="Enter your full shipping address"
+        required
+    >
+
+</div>
+
+
+<!-- DISTANCE / PICKUP -->
+
+<div class="form-group">
+
+    <label for="distance">
+        Driving Distance From Belmont North NSW 2280
+    </label>
+
+
+    <select
+        id="distance"
+        name="Shipping / Pickup"
+        required
+    >
+
+        <option value="">
+            Select your distance
+        </option>
+
+
+        <option
+            value="Pick up - FREE"
+            data-price="0"
         >
+            Pick up - FREE
+        </option>
 
-    </div>
 
-
-    <div class="form-group">
-
-        <label for="contact">
-            Phone Number / Email Address
-        </label>
-
-        <input
-            type="text"
-            id="contact"
-            name="Phone Number / Email"
-            placeholder="Enter your phone number or email"
-            required
+        <option
+            value="0–1 hours - $5 shipping"
+            data-price="5"
         >
+            0–1 hour — $5 shipping
+        </option>
 
-    </div>
 
-
-    <div class="form-group">
-
-        <label for="address">
-            Shipping Address
-        </label>
-
-        <input
-            type="text"
-            id="address"
-            name="Shipping Address"
-            placeholder="Enter your full shipping address"
-            required
+        <option
+            value="1–3 hours - $8 shipping"
+            data-price="8"
         >
+            1–3 hours — $8 shipping
+        </option>
 
-    </div>
 
-
-    <div class="form-group">
-
-        <label for="distance">
-            Driving Distance From Belmont North NSW 2280
-        </label>
-
-        <select
-            id="distance"
-            name="Driving Distance"
-            required
+        <option
+            value="3–5 hours - $12 shipping"
+            data-price="12"
         >
-
-            <option value="">
-                Select your distance
-            </option>
-
-            <option
-                value="0–1 hours - $5 shipping"
-                data-price="5"
-            >
-                0–1 hour — $5 shipping
-            </option>
-
-            <option
-                value="1–3 hours - $8 shipping"
-                data-price="8"
-            >
-                1–3 hours — $8 shipping
-            </option>
-
-            <option
-                value="3–5 hours - $12 shipping"
-                data-price="12"
-            >
-                3–5 hours — $12 shipping
-            </option>
-
-            <option
-                value="5+ hours - $15 shipping"
-                data-price="15"
-            >
-                5+ hours — $15 shipping
-            </option>
-
-        </select>
-
-    </div>
+            3–5 hours — $12 shipping
+        </option>
 
 
-    <!-- COLOUR -->
-
-    <div class="form-group">
-
-        <label for="colour">
-            Colour
-        </label>
-
-        <select
-            id="colour"
-            name="Colour Ordered"
-            required
+        <option
+            value="5+ hours - $15 shipping"
+            data-price="15"
         >
+            5+ hours — $15 shipping
+        </option>
 
-            <option value="">
-                Select a colour
-            </option>
+    </select>
 
-            <option value="White">
-                White
-            </option>
+</div>
 
-            <option value="Silk White">
-                Silk White
-            </option>
 
-            <option value="Copper Gold">
-                Copper Gold
-            </option>
+<!-- QUANTITY -->
 
-            <option value="Blue/Red/Black Multicolour">
-                Blue/Red/Black Multicolour
-            </option>
+<div class="form-group">
 
-            <option value="Grey Marble">
-                Grey Marble
-            </option>
+    <label for="customer-quantity">
+        Quantity
+    </label>
 
-        </select>
+    <input
+        type="number"
+        id="customer-quantity"
+        name="Quantity"
+        min="1"
+        step="1"
+        placeholder="Enter quantity"
+        required
+    >
 
-    </div>
+</div>
+
+
+<!-- COLOUR -->
+
+<div class="form-group">
+
+    <label for="colour">
+        Colour
+    </label>
+
+
+    <select
+        id="colour"
+        name="Colour Ordered"
+        required
+    >
+
+        <option value="">
+            Select a colour
+        </option>
+
+
+        <option value="White">
+            White
+        </option>
+
+
+        <option value="Silk White">
+            Silk White
+        </option>
+
+
+        <option value="Copper Gold">
+            Copper Gold
+        </option>
+
+
+        <option value="Blue/Red/Black Multicolour">
+            Blue/Red/Black Multicolour
+        </option>
+
+
+        <option value="Grey Marble">
+            Grey Marble
+        </option>
+
+    </select>
 
 
     <p class="note">
-        Please select the colour you would like for your order.
+        If you spend $50 or more, you will receive either a free Bookmark or a free Bronthor Designs Keychain.
+    </p>
+
+</div>
+
+
+<!-- FREE GIFT -->
+
+<div
+    class="free-gift-box"
+    id="free-gift-box"
+>
+
+    <h3>
+        🎁 You Qualify for a FREE Gift!
+    </h3>
+
+
+    <p>
+        Your cart is $50 or more, so choose one free gift:
     </p>
 
 
-    <button
-        type="submit"
-        class="checkout-button"
+    <select
+        id="free-gift"
+        name="Free Gift"
     >
-        SUBMIT ORDER
-    </button>
+
+        <option value="">
+            Select your FREE gift
+        </option>
+
+
+        <option value="Free Bookmark">
+            Get Free Bookmark
+        </option>
+
+
+        <option value="Free BRONTHOR DESIGNS Keychain">
+            Get Free BRONTHOR DESIGNS Keychain
+        </option>
+
+    </select>
+
+</div>
+
+
+<!-- SUBMIT -->
+
+<button
+    type="submit"
+    class="checkout-button"
+>
+    SUBMIT ORDER
+</button>
+
 
 </form>
 
 </div>
 
+
 </div>
 
+
 <footer>
+
     © 2026 Bronthor Designs — From Imagination To Creation
+
 </footer>
 
 </div>
@@ -612,33 +944,44 @@ footer {
 
     <div class="thank-you-box">
 
-        <h1>Thank You for Your Order!</h1>
+        <h1>
+            Thank You for Your Order!
+        </h1>
+
 
         <p>
             Thank you for submitting your order with
             <strong>Bronthor Designs</strong>.
         </p>
 
+
         <p>
             We will send you a text or email with the final
             price of your items and shipping.
         </p>
+
 
         <p>
             We will also send our bank details so you can
             transfer the payment to us.
         </p>
 
+
         <p>
             Once we receive the payment, we will send you
             a text or email confirming your order.
         </p>
 
+
         <p>
             Thank you for supporting Bronthor Designs!
         </p>
 
-        <a href="#" class="back-button">
+
+        <a
+            href="#"
+            class="back-button"
+        >
             Return to Shop
         </a>
 
@@ -649,15 +992,19 @@ footer {
 
 <script>
 
+
+/* CART */
+
 let cart = [];
 
 
-/* ADD PRODUCT */
+/* ADD TO CART */
 
 function addToCart(name, price) {
 
     const existing =
         cart.find(item => item.name === name);
+
 
     if (existing) {
 
@@ -673,6 +1020,7 @@ function addToCart(name, price) {
 
     }
 
+
     updateCart();
 }
 
@@ -683,11 +1031,13 @@ function changeQuantity(index, amount) {
 
     cart[index].quantity += amount;
 
+
     if (cart[index].quantity <= 0) {
 
         cart.splice(index, 1);
 
     }
+
 
     updateCart();
 }
@@ -723,14 +1073,17 @@ function getShipping() {
     const distance =
         document.getElementById("distance");
 
+
     if (!distance.value) {
 
         return 0;
 
     }
 
+
     const selectedOption =
         distance.options[distance.selectedIndex];
+
 
     return Number(
         selectedOption.getAttribute("data-price")
@@ -746,6 +1099,7 @@ function updateCart() {
     const cartItems =
         document.getElementById("cart-items");
 
+
     if (cart.length === 0) {
 
         cartItems.innerHTML =
@@ -755,15 +1109,20 @@ function updateCart() {
 
         cartItems.innerHTML = "";
 
+
         cart.forEach((item, index) => {
 
             const itemTotal =
                 item.price * item.quantity;
 
+
             const div =
                 document.createElement("div");
 
-            div.className = "cart-item";
+
+            div.className =
+                "cart-item";
+
 
             div.innerHTML = `
 
@@ -779,6 +1138,7 @@ function updateCart() {
 
                 </div>
 
+
                 <div class="quantity">
 
                     <button
@@ -788,9 +1148,11 @@ function updateCart() {
                         −
                     </button>
 
+
                     <strong>
                         ${item.quantity}
                     </strong>
+
 
                     <button
                         type="button"
@@ -801,9 +1163,11 @@ function updateCart() {
 
                 </div>
 
+
                 <strong>
                     $${itemTotal.toFixed(2)}
                 </strong>
+
 
                 <button
                     type="button"
@@ -815,37 +1179,83 @@ function updateCart() {
 
             `;
 
+
             cartItems.appendChild(div);
 
         });
 
     }
 
+
     updateTotals();
+
 }
 
 
-/* TOTALS */
+/* UPDATE TOTALS */
 
 function updateTotals() {
 
     const itemsTotal =
         getItemsTotal();
 
+
     const shipping =
         getShipping();
+
 
     const orderTotal =
         itemsTotal + shipping;
 
+
     document.getElementById("items-total").textContent =
         "$" + itemsTotal.toFixed(2);
+
 
     document.getElementById("shipping-total").textContent =
         "$" + shipping.toFixed(2);
 
+
     document.getElementById("order-total").textContent =
         "$" + orderTotal.toFixed(2);
+
+
+    /*
+    Check if customer qualifies
+    for the $50 FREE GIFT.
+    */
+
+    const giftBox =
+        document.getElementById("free-gift");
+
+
+    const giftContainer =
+        document.getElementById("free-gift-box");
+
+
+    if (itemsTotal >= 50) {
+
+        giftContainer.style.display =
+            "block";
+
+
+        giftBox.required =
+            true;
+
+    } else {
+
+        giftContainer.style.display =
+            "none";
+
+
+        giftBox.required =
+            false;
+
+
+        giftBox.value =
+            "";
+
+    }
 
 }
 
@@ -858,24 +1268,35 @@ document.getElementById("distance").addEventListener(
 );
 
 
-/* SUBMIT ORDER */
+/* FORM SUBMISSION */
 
 document.getElementById("order-form").addEventListener(
     "submit",
     function(event) {
 
+
+        /*
+        Make sure cart isn't empty.
+        */
+
         if (cart.length === 0) {
 
             event.preventDefault();
+
 
             alert(
                 "Please add at least one product to your cart before submitting your order."
             );
 
+
             return;
 
         }
 
+
+        /*
+        Get colour.
+        */
 
         const colour =
             document.getElementById("colour").value;
@@ -885,30 +1306,108 @@ document.getElementById("order-form").addEventListener(
 
             event.preventDefault();
 
+
             alert(
                 "Please select a colour for your order."
             );
+
 
             return;
 
         }
 
 
+        /*
+        Get quantity.
+        */
+
+        const customerQuantity =
+            document.getElementById(
+                "customer-quantity"
+            ).value;
+
+
+        if (!customerQuantity) {
+
+            event.preventDefault();
+
+
+            alert(
+                "Please enter the quantity."
+            );
+
+
+            return;
+
+        }
+
+
+        /*
+        Calculate totals.
+        */
+
         const itemsTotal =
             getItemsTotal();
 
+
         const shipping =
             getShipping();
+
 
         const orderTotal =
             itemsTotal + shipping;
 
 
         /*
-        Create a clean order summary.
+        Get pickup/shipping selection.
         */
 
-        let summary = "";
+        const distance =
+            document.getElementById("distance");
+
+
+        const shippingChoice =
+            distance.options[
+                distance.selectedIndex
+            ].text;
+
+
+        /*
+        Get free gift.
+        */
+
+        const gift =
+            document.getElementById("free-gift").value;
+
+
+        /*
+        Make sure a free gift
+        was selected if they
+        spent $50 or more.
+        */
+
+        if (itemsTotal >= 50 && !gift) {
+
+            event.preventDefault();
+
+
+            alert(
+                "Please choose your FREE gift."
+            );
+
+
+            return;
+
+        }
+
+
+        /*
+        Build order summary.
+        */
+
+        let summary =
+            "";
+
 
         cart.forEach(item => {
 
@@ -924,8 +1423,7 @@ document.getElementById("order-form").addEventListener(
 
 
         /*
-        Put the colour into the
-        order summary as well.
+        Add colour.
         */
 
         summary +=
@@ -934,22 +1432,67 @@ document.getElementById("order-form").addEventListener(
 
 
         /*
-        Send information to FormSubmit.
+        Add quantity.
         */
 
-        document.getElementById("order-summary").value =
+        summary +=
+            "\nQUANTITY ENTERED: " +
+            customerQuantity;
+
+
+        /*
+        Add shipping/pickup.
+        */
+
+        summary +=
+            "\nDELIVERY / PICKUP: " +
+            shippingChoice;
+
+
+        /*
+        Add free gift information.
+        */
+
+        if (itemsTotal >= 50) {
+
+            summary +=
+                "\nFREE GIFT: " +
+                gift;
+
+        } else {
+
+            summary +=
+                "\nFREE GIFT: Not applicable";
+
+        }
+
+
+        /*
+        Send information
+        to FormSubmit.
+        */
+
+        document.getElementById(
+            "order-summary"
+        ).value =
             summary;
 
 
-        document.getElementById("email-items-total").value =
+        document.getElementById(
+            "email-items-total"
+        ).value =
             "$" + itemsTotal.toFixed(2);
 
 
-        document.getElementById("email-shipping").value =
+        document.getElementById(
+            "email-shipping"
+        ).value =
             "$" + shipping.toFixed(2);
 
 
-        document.getElementById("email-order-total").value =
+        document.getElementById(
+            "email-order-total"
+        ).value =
             "$" + orderTotal.toFixed(2);
 
 
@@ -960,10 +1503,14 @@ document.getElementById("order-form").addEventListener(
         const currentURL =
             window.location.href.split("#")[0];
 
-        document.getElementById("next-page").value =
+
+        document.getElementById(
+            "next-page"
+        ).value =
             currentURL + "#thank-you";
 
     }
+
 );
 
 
@@ -971,22 +1518,37 @@ document.getElementById("order-form").addEventListener(
 
 function checkThankYouPage() {
 
+
     if (window.location.hash === "#thank-you") {
 
-        document.getElementById("main-page").style.display =
+
+        document.getElementById(
+            "main-page"
+        ).style.display =
             "none";
 
-        document.getElementById("thank-you").style.display =
+
+        document.getElementById(
+            "thank-you"
+        ).style.display =
             "block";
+
 
         window.scrollTo(0, 0);
 
+
     } else {
 
-        document.getElementById("main-page").style.display =
+
+        document.getElementById(
+            "main-page"
+        ).style.display =
             "block";
 
-        document.getElementById("thank-you").style.display =
+
+        document.getElementById(
+            "thank-you"
+        ).style.display =
             "none";
 
     }
@@ -996,11 +1558,14 @@ function checkThankYouPage() {
 
 /* RETURN TO SHOP */
 
-document.querySelector(".back-button").addEventListener(
+document.querySelector(
+    ".back-button"
+).addEventListener(
     "click",
     function(event) {
 
         event.preventDefault();
+
 
         window.location.href =
             window.location.href.split("#")[0];
@@ -1015,6 +1580,8 @@ updateCart();
 
 checkThankYouPage();
 
+
+/* HASH CHANGE */
 
 window.addEventListener(
     "hashchange",
