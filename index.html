@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -160,6 +159,14 @@ textarea {
     color: #aaa;
     font-size: 13px;
     margin-top: 7px;
+}
+
+.product-colour-group {
+    margin-bottom: 14px;
+}
+
+.product-colour-group label {
+    margin-bottom: 7px;
 }
 
 .free-gift-box {
@@ -486,14 +493,23 @@ Pick up - FREE
 </div>
 
 
-<div class="form-group">
+<!-- ============================== -->
+<!-- DYNAMIC COLOUR OPTIONS -->
+<!-- ============================== -->
 
-<label for="colour">
+<div
+class="form-group"
+id="colour-section"
+>
+
+<label id="colour-main-label">
 Colour
 </label>
 
+<div id="colour-options">
+
 <select
-id="colour"
+id="single-colour"
 name="Colour Ordered"
 required
 >
@@ -523,6 +539,8 @@ Grey Marble
 </option>
 
 </select>
+
+</div>
 
 <div class="colour-info">
 
@@ -687,6 +705,23 @@ Return to Shop
 let cart = [];
 
 
+/* =========================================
+   AVAILABLE COLOURS
+========================================= */
+
+const availableColours = [
+    "White",
+    "Silk White",
+    "Copper Gold",
+    "Blue/Red/Black Multicolour",
+    "Grey Marble"
+];
+
+
+/* =========================================
+   ADD TO CART
+========================================= */
+
 function addToCart(name, price) {
 
     const existingItem = cart.find(
@@ -702,7 +737,8 @@ function addToCart(name, price) {
         cart.push({
             name: name,
             price: price,
-            quantity: 1
+            quantity: 1,
+            colour: ""
         });
 
     }
@@ -711,6 +747,10 @@ function addToCart(name, price) {
 
 }
 
+
+/* =========================================
+   QUANTITY
+========================================= */
 
 function increaseQuantity(index) {
 
@@ -738,6 +778,10 @@ function decreaseQuantity(index) {
 }
 
 
+/* =========================================
+   ITEMS TOTAL
+========================================= */
+
 function getItemsTotal() {
 
     let total = 0;
@@ -754,6 +798,10 @@ function getItemsTotal() {
 
 }
 
+
+/* =========================================
+   SHIPPING PRICE
+========================================= */
 
 function getShippingPrice() {
 
@@ -780,9 +828,9 @@ function getShippingPrice() {
 }
 
 
-// ==============================
-// PICKUP ADDRESS CONTROL
-// ==============================
+/* =========================================
+   PICKUP ADDRESS
+========================================= */
 
 function updateAddressField() {
 
@@ -828,9 +876,325 @@ function updateAddressField() {
 }
 
 
-// ==============================
-// CART DISPLAY
-// ==============================
+/* =========================================
+   DYNAMIC COLOUR SELECTORS
+========================================= */
+
+function updateColourOptions() {
+
+    const colourOptions =
+        document.getElementById(
+            "colour-options"
+        );
+
+    const mainLabel =
+        document.getElementById(
+            "colour-main-label"
+        );
+
+
+    /*
+       Find how many DIFFERENT products
+       are currently in the cart.
+    */
+
+    const differentProducts =
+        cart.length;
+
+
+    /*
+       No products
+    */
+
+    if (differentProducts === 0) {
+
+        mainLabel.textContent =
+            "Colour";
+
+        colourOptions.innerHTML = `
+
+            <select
+                id="single-colour"
+                name="Colour Ordered"
+                required
+            >
+
+                <option value="">
+                    Select a colour
+                </option>
+
+                ${availableColours.map(colour => `
+                    <option value="${colour}">
+                        ${colour}
+                    </option>
+                `).join("")}
+
+            </select>
+
+        `;
+
+        return;
+
+    }
+
+
+    /*
+       ONLY ONE DIFFERENT PRODUCT
+       Show one normal Colour option.
+    */
+
+    if (differentProducts === 1) {
+
+        const item =
+            cart[0];
+
+        const previousColour =
+            item.colour || "";
+
+
+        mainLabel.textContent =
+            "Colour";
+
+
+        colourOptions.innerHTML = `
+
+            <select
+                id="single-colour"
+                name="Colour Ordered"
+                required
+            >
+
+                <option value="">
+                    Select a colour
+                </option>
+
+                ${availableColours.map(colour => `
+                    <option
+                        value="${colour}"
+                        ${previousColour === colour ? "selected" : ""}
+                    >
+                        ${colour}
+                    </option>
+                `).join("")}
+
+            </select>
+
+        `;
+
+
+        document
+            .getElementById("single-colour")
+            .addEventListener(
+                "change",
+                function() {
+
+                    item.colour =
+                        this.value;
+
+                    updateSummary();
+
+                }
+            );
+
+
+        return;
+
+    }
+
+
+    /*
+       TWO OR MORE DIFFERENT PRODUCTS
+       Give EVERY product its own colour selector.
+    */
+
+    mainLabel.textContent =
+        "Colours";
+
+
+    colourOptions.innerHTML = "";
+
+
+    cart.forEach((item, index) => {
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className =
+            "product-colour-group";
+
+
+        const label =
+            document.createElement("label");
+
+        label.textContent =
+            item.name +
+            " Colour";
+
+
+        const select =
+            document.createElement("select");
+
+        select.required = true;
+
+        select.name =
+            item.name +
+            " Colour";
+
+
+        const blankOption =
+            document.createElement("option");
+
+        blankOption.value = "";
+
+        blankOption.textContent =
+            "Select a colour";
+
+
+        select.appendChild(
+            blankOption
+        );
+
+
+        availableColours.forEach(
+            colour => {
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+                option.value =
+                    colour;
+
+                option.textContent =
+                    colour;
+
+
+                if (
+                    item.colour ===
+                    colour
+                ) {
+
+                    option.selected =
+                        true;
+
+                }
+
+
+                select.appendChild(
+                    option
+                );
+
+            }
+        );
+
+
+        select.addEventListener(
+            "change",
+            function() {
+
+                cart[index].colour =
+                    this.value;
+
+                updateSummary();
+
+            }
+        );
+
+
+        wrapper.appendChild(
+            label
+        );
+
+        wrapper.appendChild(
+            select
+        );
+
+
+        colourOptions.appendChild(
+            wrapper
+        );
+
+    });
+
+}
+
+
+/* =========================================
+   GET COLOUR SUMMARY
+========================================= */
+
+function getColourSummary() {
+
+    if (cart.length === 0) {
+
+        return "Not selected";
+
+    }
+
+
+    /*
+       ONE PRODUCT
+    */
+
+    if (cart.length === 1) {
+
+        return cart[0].colour ||
+            "Not selected";
+
+    }
+
+
+    /*
+       MULTIPLE PRODUCTS
+    */
+
+    let colourSummary = "";
+
+
+    cart.forEach(item => {
+
+        colourSummary +=
+            item.name +
+            " Colour: " +
+            (
+                item.colour ||
+                "Not selected"
+            ) +
+            "\n";
+
+    });
+
+
+    return colourSummary.trim();
+
+}
+
+
+/* =========================================
+   CHECK IF ALL COLOURS ARE SELECTED
+========================================= */
+
+function allColoursSelected() {
+
+    if (cart.length === 0) {
+
+        return false;
+
+    }
+
+
+    return cart.every(
+        item => item.colour &&
+                item.colour.trim() !== ""
+    );
+
+}
+
+
+/* =========================================
+   CART DISPLAY
+========================================= */
 
 function updateCart() {
 
@@ -852,6 +1216,8 @@ function updateCart() {
 
         itemsTotal.textContent =
             "0.00";
+
+        updateColourOptions();
 
         updateSummary();
 
@@ -935,14 +1301,17 @@ function updateCart() {
     itemsTotal.textContent =
         total.toFixed(2);
 
+
+    updateColourOptions();
+
     updateSummary();
 
 }
 
 
-// ==============================
-// FREE GIFT
-// ==============================
+/* =========================================
+   FREE GIFT
+========================================= */
 
 function updateFreeGift() {
 
@@ -983,9 +1352,9 @@ function updateFreeGift() {
 }
 
 
-// ==============================
-// ORDER SUMMARY
-// ==============================
+/* =========================================
+   ORDER SUMMARY
+========================================= */
 
 function updateSummary() {
 
@@ -1049,27 +1418,43 @@ function updateSummary() {
         "Not selected";
 
 
-    const colour =
-        document.getElementById(
-            "colour"
-        ).value ||
-        "Not selected";
-
-
-    const gift =
-        document.getElementById(
-            "free-gift"
-        ).value;
-
-
     summary +=
         "\n--------------------\n";
 
 
-    summary +=
-        "COLOUR: " +
-        colour +
-        "\n";
+    /*
+       COLOURS
+    */
+
+    if (cart.length === 1) {
+
+        summary +=
+            "COLOUR: " +
+            (
+                cart[0].colour ||
+                "Not selected"
+            ) +
+            "\n";
+
+    } else {
+
+        summary +=
+            "COLOURS:\n";
+
+        cart.forEach(item => {
+
+            summary +=
+                item.name +
+                " Colour: " +
+                (
+                    item.colour ||
+                    "Not selected"
+                ) +
+                "\n";
+
+        });
+
+    }
 
 
     summary +=
@@ -1094,6 +1479,12 @@ function updateSummary() {
         "ORDER TOTAL: $" +
         orderTotal.toFixed(2) +
         "\n";
+
+
+    const gift =
+        document.getElementById(
+            "free-gift"
+        ).value;
 
 
     if (itemsTotal >= 50) {
@@ -1123,9 +1514,9 @@ function updateSummary() {
 }
 
 
-// ==============================
-// SHIPPING CHANGE
-// ==============================
+/* =========================================
+   SHIPPING CHANGE
+========================================= */
 
 document
     .getElementById("shipping")
@@ -1141,21 +1532,9 @@ document
     );
 
 
-// ==============================
-// COLOUR CHANGE
-// ==============================
-
-document
-    .getElementById("colour")
-    .addEventListener(
-        "change",
-        updateSummary
-    );
-
-
-// ==============================
-// FREE GIFT CHANGE
-// ==============================
+/* =========================================
+   FREE GIFT CHANGE
+========================================= */
 
 document
     .getElementById("free-gift")
@@ -1165,9 +1544,9 @@ document
     );
 
 
-// ==============================
-// FORM SUBMISSION
-// ==============================
+/* =========================================
+   FORM SUBMISSION
+========================================= */
 
 document
     .getElementById("order-form")
@@ -1175,6 +1554,10 @@ document
         "submit",
         function(event) {
 
+
+            /*
+               CART CHECK
+            */
 
             if (cart.length === 0) {
 
@@ -1188,6 +1571,10 @@ document
 
             }
 
+
+            /*
+               SHIPPING CHECK
+            */
 
             const shipping =
                 document.getElementById(
@@ -1209,6 +1596,10 @@ document
 
             }
 
+
+            /*
+               ADDRESS CHECK
+            */
 
             const address =
                 document.getElementById(
@@ -1235,26 +1626,26 @@ document
             }
 
 
-            const colour =
-                document.getElementById(
-                    "colour"
-                );
+            /*
+               COLOUR CHECK
+            */
 
-
-            if (!colour.value) {
+            if (!allColoursSelected()) {
 
                 event.preventDefault();
 
                 alert(
-                    "Please select a colour."
+                    "Please select a colour for every item in your cart."
                 );
-
-                colour.focus();
 
                 return;
 
             }
 
+
+            /*
+               FREE GIFT CHECK
+            */
 
             const itemsTotal =
                 getItemsTotal();
@@ -1284,6 +1675,10 @@ document
             }
 
 
+            /*
+               SHIPPING PRICE
+            */
+
             const shippingPrice =
                 getShippingPrice();
 
@@ -1292,6 +1687,10 @@ document
                 itemsTotal +
                 shippingPrice;
 
+
+            /*
+               CREATE EMAIL ORDER SUMMARY
+            */
 
             let summary = "";
 
@@ -1311,6 +1710,17 @@ document
                     itemTotal.toFixed(2) +
                     "\n";
 
+
+                /*
+                   ADD EACH PRODUCT'S COLOUR
+                   DIRECTLY UNDER THE PRODUCT
+                */
+
+                summary +=
+                    "   COLOUR: " +
+                    item.colour +
+                    "\n";
+
             });
 
 
@@ -1319,16 +1729,14 @@ document
 
 
             summary +=
-                "COLOUR: " +
-                colour.value +
-                "\n";
-
-
-            summary +=
                 "DELIVERY / PICKUP: " +
                 shipping.value +
                 "\n";
 
+
+            /*
+               PICKUP OR DELIVERY ADDRESS
+            */
 
             if (
                 shipping.value ===
@@ -1366,6 +1774,10 @@ document
                 "\n";
 
 
+            /*
+               FREE GIFT
+            */
+
             if (itemsTotal >= 50) {
 
                 summary +=
@@ -1380,6 +1792,10 @@ document
 
             }
 
+
+            /*
+               SEND TOTALS TO FORMSUBMIT
+            */
 
             document
                 .getElementById(
@@ -1408,6 +1824,11 @@ document
                 orderTotal.toFixed(2);
 
 
+            /*
+               SEND COMPLETE ORDER SUMMARY
+               INCLUDING EACH PRODUCT'S COLOUR
+            */
+
             document
                 .getElementById(
                     "hidden-order-summary"
@@ -1415,6 +1836,10 @@ document
                 .value =
                 summary;
 
+
+            /*
+               THANK-YOU PAGE REDIRECT
+            */
 
             const currentPage =
                 window.location.href.split("#")[0];
@@ -1432,9 +1857,9 @@ document
     );
 
 
-// ==============================
-// THANK YOU PAGE
-// ==============================
+/* =========================================
+   THANK YOU PAGE
+========================================= */
 
 function showThankYouPage() {
 
