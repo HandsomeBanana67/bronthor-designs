@@ -1,3 +1,5 @@
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,7 +164,7 @@ textarea {
 }
 
 .product-colour-group {
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 }
 
 .product-colour-group label {
@@ -373,7 +375,6 @@ method="POST"
 id="order-form"
 >
 
-
 <input
 type="hidden"
 name="_subject"
@@ -493,9 +494,7 @@ Pick up - FREE
 </div>
 
 
-<!-- ============================== -->
-<!-- DYNAMIC COLOUR OPTIONS -->
-<!-- ============================== -->
+<!-- COLOUR SECTION -->
 
 <div
 class="form-group"
@@ -510,7 +509,6 @@ Colour
 
 <select
 id="single-colour"
-name="Colour Ordered"
 required
 >
 
@@ -550,6 +548,8 @@ Please note: Colour availability may vary depending on the product.
 
 </div>
 
+
+<!-- FREE GIFT -->
 
 <div
 class="free-gift-box"
@@ -653,6 +653,8 @@ Submit Order
 </div>
 
 
+<!-- THANK YOU PAGE -->
+
 <div id="thank-you">
 
 <div class="thank-you-box">
@@ -732,13 +734,25 @@ function addToCart(name, price) {
 
         existingItem.quantity++;
 
+        /*
+           Add a new individual colour slot
+           for the additional item.
+        */
+
+        existingItem.colours.push("");
+
     } else {
 
         cart.push({
+
             name: name,
+
             price: price,
+
             quantity: 1,
-            colour: ""
+
+            colours: [""]
+
         });
 
     }
@@ -749,23 +763,31 @@ function addToCart(name, price) {
 
 
 /* =========================================
-   QUANTITY
+   INCREASE QUANTITY
 ========================================= */
 
 function increaseQuantity(index) {
 
     cart[index].quantity++;
 
+    cart[index].colours.push("");
+
     updateCart();
 
 }
 
+
+/* =========================================
+   DECREASE QUANTITY
+========================================= */
 
 function decreaseQuantity(index) {
 
     if (cart[index].quantity > 1) {
 
         cart[index].quantity--;
+
+        cart[index].colours.pop();
 
     } else {
 
@@ -877,7 +899,136 @@ function updateAddressField() {
 
 
 /* =========================================
-   DYNAMIC COLOUR SELECTORS
+   CREATE COLOUR OPTIONS
+========================================= */
+
+function createColourSelect(
+    productName,
+    itemNumber,
+    currentColour,
+    uniqueKey
+) {
+
+    const wrapper =
+        document.createElement(
+            "div"
+        );
+
+    wrapper.className =
+        "product-colour-group";
+
+
+    const label =
+        document.createElement(
+            "label"
+        );
+
+    label.textContent =
+        productName +
+        " " +
+        itemNumber +
+        " Colour";
+
+
+    const select =
+        document.createElement(
+            "select"
+        );
+
+    select.required = true;
+
+
+    const blankOption =
+        document.createElement(
+            "option"
+        );
+
+    blankOption.value = "";
+
+    blankOption.textContent =
+        "Select a colour";
+
+
+    select.appendChild(
+        blankOption
+    );
+
+
+    availableColours.forEach(
+        colour => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value =
+                colour;
+
+            option.textContent =
+                colour;
+
+
+            if (
+                currentColour ===
+                colour
+            ) {
+
+                option.selected =
+                    true;
+
+            }
+
+
+            select.appendChild(
+                option
+            );
+
+        }
+    );
+
+
+    select.addEventListener(
+        "change",
+        function() {
+
+            const keyParts =
+                uniqueKey.split("-");
+
+            const cartIndex =
+                Number(keyParts[0]);
+
+            const colourIndex =
+                Number(keyParts[1]);
+
+
+            cart[cartIndex]
+                .colours[colourIndex] =
+                this.value;
+
+
+            updateSummary();
+
+        }
+    );
+
+
+    wrapper.appendChild(
+        label
+    );
+
+    wrapper.appendChild(
+        select
+    );
+
+
+    return wrapper;
+
+}
+
+
+/* =========================================
+   UPDATE COLOUR OPTIONS
 ========================================= */
 
 function updateColourOptions() {
@@ -893,165 +1044,130 @@ function updateColourOptions() {
         );
 
 
-    /*
-       Find how many DIFFERENT products
-       are currently in the cart.
-    */
-
-    const differentProducts =
-        cart.length;
+    colourOptions.innerHTML = "";
 
 
     /*
        No products
     */
 
-    if (differentProducts === 0) {
+    if (cart.length === 0) {
 
         mainLabel.textContent =
             "Colour";
-
-        colourOptions.innerHTML = `
-
-            <select
-                id="single-colour"
-                name="Colour Ordered"
-                required
-            >
-
-                <option value="">
-                    Select a colour
-                </option>
-
-                ${availableColours.map(colour => `
-                    <option value="${colour}">
-                        ${colour}
-                    </option>
-                `).join("")}
-
-            </select>
-
-        `;
-
-        return;
-
-    }
-
-
-    /*
-       ONLY ONE DIFFERENT PRODUCT
-       Show one normal Colour option.
-    */
-
-    if (differentProducts === 1) {
-
-        const item =
-            cart[0];
-
-        const previousColour =
-            item.colour || "";
-
-
-        mainLabel.textContent =
-            "Colour";
-
-
-        colourOptions.innerHTML = `
-
-            <select
-                id="single-colour"
-                name="Colour Ordered"
-                required
-            >
-
-                <option value="">
-                    Select a colour
-                </option>
-
-                ${availableColours.map(colour => `
-                    <option
-                        value="${colour}"
-                        ${previousColour === colour ? "selected" : ""}
-                    >
-                        ${colour}
-                    </option>
-                `).join("")}
-
-            </select>
-
-        `;
-
-
-        document
-            .getElementById("single-colour")
-            .addEventListener(
-                "change",
-                function() {
-
-                    item.colour =
-                        this.value;
-
-                    updateSummary();
-
-                }
-            );
-
-
-        return;
-
-    }
-
-
-    /*
-       TWO OR MORE DIFFERENT PRODUCTS
-       Give EVERY product its own colour selector.
-    */
-
-    mainLabel.textContent =
-        "Colours";
-
-
-    colourOptions.innerHTML = "";
-
-
-    cart.forEach((item, index) => {
-
-        const wrapper =
-            document.createElement("div");
-
-        wrapper.className =
-            "product-colour-group";
-
-
-        const label =
-            document.createElement("label");
-
-        label.textContent =
-            item.name +
-            " Colour";
 
 
         const select =
-            document.createElement("select");
+            document.createElement(
+                "select"
+            );
 
-        select.required = true;
-
-        select.name =
-            item.name +
-            " Colour";
+        select.id =
+            "single-colour";
 
 
-        const blankOption =
-            document.createElement("option");
+        select.required =
+            true;
 
-        blankOption.value = "";
 
-        blankOption.textContent =
+        const blank =
+            document.createElement(
+                "option"
+            );
+
+        blank.value = "";
+
+        blank.textContent =
             "Select a colour";
 
 
         select.appendChild(
-            blankOption
+            blank
+        );
+
+
+        availableColours.forEach(
+            colour => {
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+                option.value =
+                    colour;
+
+                option.textContent =
+                    colour;
+
+                select.appendChild(
+                    option
+                );
+
+            }
+        );
+
+
+        colourOptions.appendChild(
+            select
+        );
+
+        return;
+
+    }
+
+
+    /*
+       ONE INDIVIDUAL ITEM
+    */
+
+    const totalIndividualItems =
+        cart.reduce(
+            (total, item) =>
+                total + item.quantity,
+            0
+        );
+
+
+    if (
+        totalIndividualItems === 1
+    ) {
+
+        mainLabel.textContent =
+            "Colour";
+
+
+        const item =
+            cart[0];
+
+
+        const select =
+            document.createElement(
+                "select"
+            );
+
+
+        select.id =
+            "single-colour";
+
+
+        select.required =
+            true;
+
+
+        const blank =
+            document.createElement(
+                "option"
+            );
+
+        blank.value = "";
+
+        blank.textContent =
+            "Select a colour";
+
+
+        select.appendChild(
+            blank
         );
 
 
@@ -1071,7 +1187,7 @@ function updateColourOptions() {
 
 
                 if (
-                    item.colour ===
+                    item.colours[0] ===
                     colour
                 ) {
 
@@ -1093,7 +1209,7 @@ function updateColourOptions() {
             "change",
             function() {
 
-                cart[index].colour =
+                cart[0].colours[0] =
                     this.value;
 
                 updateSummary();
@@ -1102,77 +1218,66 @@ function updateColourOptions() {
         );
 
 
-        wrapper.appendChild(
-            label
-        );
-
-        wrapper.appendChild(
+        colourOptions.appendChild(
             select
         );
 
 
-        colourOptions.appendChild(
-            wrapper
-        );
-
-    });
-
-}
-
-
-/* =========================================
-   GET COLOUR SUMMARY
-========================================= */
-
-function getColourSummary() {
-
-    if (cart.length === 0) {
-
-        return "Not selected";
+        return;
 
     }
 
 
     /*
-       ONE PRODUCT
+       TWO OR MORE INDIVIDUAL ITEMS
     */
 
-    if (cart.length === 1) {
-
-        return cart[0].colour ||
-            "Not selected";
-
-    }
+    mainLabel.textContent =
+        "Colours";
 
 
-    /*
-       MULTIPLE PRODUCTS
-    */
-
-    let colourSummary = "";
+    let individualNumber = 1;
 
 
-    cart.forEach(item => {
+    cart.forEach(
+        (item, cartIndex) => {
 
-        colourSummary +=
-            item.name +
-            " Colour: " +
-            (
-                item.colour ||
-                "Not selected"
-            ) +
-            "\n";
+            for (
+                let colourIndex = 0;
+                colourIndex < item.quantity;
+                colourIndex++
+            ) {
 
-    });
+                const wrapper =
+                    createColourSelect(
+                        item.name,
+                        individualNumber,
+                        item.colours[
+                            colourIndex
+                        ] || "",
+                        cartIndex +
+                        "-" +
+                        colourIndex
+                    );
 
 
-    return colourSummary.trim();
+                colourOptions.appendChild(
+                    wrapper
+                );
+
+
+                individualNumber++;
+
+            }
+
+        }
+    );
 
 }
 
 
 /* =========================================
-   CHECK IF ALL COLOURS ARE SELECTED
+   CHECK ALL COLOURS
 ========================================= */
 
 function allColoursSelected() {
@@ -1184,10 +1289,38 @@ function allColoursSelected() {
     }
 
 
-    return cart.every(
-        item => item.colour &&
-                item.colour.trim() !== ""
-    );
+    for (
+        let cartIndex = 0;
+        cartIndex < cart.length;
+        cartIndex++
+    ) {
+
+        const item =
+            cart[cartIndex];
+
+
+        for (
+            let colourIndex = 0;
+            colourIndex < item.quantity;
+            colourIndex++
+        ) {
+
+            if (
+                !item.colours[
+                    colourIndex
+                ]
+            ) {
+
+                return false;
+
+            }
+
+        }
+
+    }
+
+
+    return true;
 
 }
 
@@ -1231,72 +1364,75 @@ function updateCart() {
     let total = 0;
 
 
-    cart.forEach((item, index) => {
+    cart.forEach(
+        (item, index) => {
 
-        const itemTotal =
-            item.price *
-            item.quantity;
-
-        total += itemTotal;
+            const itemTotal =
+                item.price *
+                item.quantity;
 
 
-        html += `
+            total +=
+                itemTotal;
 
-        <div class="cart-item">
 
-            <div>
+            html += `
+
+            <div class="cart-item">
+
+                <div>
+
+                    <strong>
+                        ${item.name}
+                    </strong>
+
+                    <br>
+
+                    $${item.price.toFixed(2)} each
+
+                </div>
+
+
+                <div class="cart-controls">
+
+                    <button
+                        type="button"
+                        onclick="decreaseQuantity(${index})"
+                    >
+                        −
+                    </button>
+
+
+                    <strong>
+                        ${item.quantity}
+                    </strong>
+
+
+                    <button
+                        type="button"
+                        onclick="increaseQuantity(${index})"
+                    >
+                        +
+                    </button>
+
+                </div>
+
 
                 <strong>
-                    ${item.name}
+                    $${itemTotal.toFixed(2)}
                 </strong>
-
-                <br>
-
-                $${item.price.toFixed(2)} each
 
             </div>
 
+            `;
 
-            <div class="cart-controls">
-
-                <button
-                    type="button"
-                    onclick="decreaseQuantity(${index})"
-                >
-                    −
-                </button>
-
-
-                <strong>
-                    ${item.quantity}
-                </strong>
-
-
-                <button
-                    type="button"
-                    onclick="increaseQuantity(${index})"
-                >
-                    +
-                </button>
-
-            </div>
-
-
-            <strong>
-
-                $${itemTotal.toFixed(2)}
-
-            </strong>
-
-        </div>
-
-        `;
-
-    });
+        }
+    );
 
 
     cartItems.innerHTML =
         html;
+
 
     itemsTotal.textContent =
         total.toFixed(2);
@@ -1318,10 +1454,12 @@ function updateFreeGift() {
     const total =
         getItemsTotal();
 
+
     const giftBox =
         document.getElementById(
             "free-gift-box"
         );
+
 
     const gift =
         document.getElementById(
@@ -1345,7 +1483,8 @@ function updateFreeGift() {
         gift.required =
             false;
 
-        gift.value = "";
+        gift.value =
+            "";
 
     }
 
@@ -1378,29 +1517,56 @@ function updateSummary() {
 
     let summary = "";
 
+    let itemNumber = 1;
 
-    cart.forEach(item => {
 
-        const itemTotal =
-            item.price *
-            item.quantity;
+    cart.forEach(
+        item => {
 
-        summary +=
-            item.name +
-            " x" +
-            item.quantity +
-            " — $" +
-            itemTotal.toFixed(2) +
-            "\n";
+            for (
+                let colourIndex = 0;
+                colourIndex < item.quantity;
+                colourIndex++
+            ) {
 
-    });
+                const colour =
+                    item.colours[
+                        colourIndex
+                    ] ||
+                    "Not selected";
+
+
+                summary +=
+                    item.name +
+                    " " +
+                    itemNumber +
+                    " — " +
+                    "$" +
+                    item.price.toFixed(2) +
+                    "\n";
+
+
+                summary +=
+                    "   COLOUR: " +
+                    colour +
+                    "\n";
+
+
+                itemNumber++;
+
+            }
+
+        }
+    );
 
 
     const itemsTotal =
         getItemsTotal();
 
+
     const shipping =
         getShippingPrice();
+
 
     const orderTotal =
         itemsTotal +
@@ -1420,41 +1586,6 @@ function updateSummary() {
 
     summary +=
         "\n--------------------\n";
-
-
-    /*
-       COLOURS
-    */
-
-    if (cart.length === 1) {
-
-        summary +=
-            "COLOUR: " +
-            (
-                cart[0].colour ||
-                "Not selected"
-            ) +
-            "\n";
-
-    } else {
-
-        summary +=
-            "COLOURS:\n";
-
-        cart.forEach(item => {
-
-            summary +=
-                item.name +
-                " Colour: " +
-                (
-                    item.colour ||
-                    "Not selected"
-                ) +
-                "\n";
-
-        });
-
-    }
 
 
     summary +=
@@ -1553,7 +1684,6 @@ document
     .addEventListener(
         "submit",
         function(event) {
-
 
             /*
                CART CHECK
@@ -1689,43 +1819,54 @@ document
 
 
             /*
-               CREATE EMAIL ORDER SUMMARY
+               BUILD EMAIL SUMMARY
             */
 
             let summary = "";
 
-
-            cart.forEach(item => {
-
-                const itemTotal =
-                    item.price *
-                    item.quantity;
+            let itemNumber = 1;
 
 
-                summary +=
-                    item.name +
-                    " x" +
-                    item.quantity +
-                    " — $" +
-                    itemTotal.toFixed(2) +
-                    "\n";
+            cart.forEach(
+                item => {
+
+                    for (
+                        let colourIndex = 0;
+                        colourIndex < item.quantity;
+                        colourIndex++
+                    ) {
+
+                        const colour =
+                            item.colours[
+                                colourIndex
+                            ];
 
 
-                /*
-                   ADD EACH PRODUCT'S COLOUR
-                   DIRECTLY UNDER THE PRODUCT
-                */
+                        summary +=
+                            item.name +
+                            " " +
+                            itemNumber +
+                            " — $" +
+                            item.price.toFixed(2) +
+                            "\n";
 
-                summary +=
-                    "   COLOUR: " +
-                    item.colour +
-                    "\n";
 
-            });
+                        summary +=
+                            "COLOUR: " +
+                            colour +
+                            "\n\n";
+
+
+                        itemNumber++;
+
+                    }
+
+                }
+            );
 
 
             summary +=
-                "\n--------------------\n";
+                "--------------------\n";
 
 
             summary +=
@@ -1735,7 +1876,7 @@ document
 
 
             /*
-               PICKUP OR DELIVERY ADDRESS
+               ADDRESS
             */
 
             if (
@@ -1794,7 +1935,7 @@ document
 
 
             /*
-               SEND TOTALS TO FORMSUBMIT
+               SEND INFORMATION TO FORMSUBMIT
             */
 
             document
@@ -1824,11 +1965,6 @@ document
                 orderTotal.toFixed(2);
 
 
-            /*
-               SEND COMPLETE ORDER SUMMARY
-               INCLUDING EACH PRODUCT'S COLOUR
-            */
-
             document
                 .getElementById(
                     "hidden-order-summary"
@@ -1838,7 +1974,7 @@ document
 
 
             /*
-               THANK-YOU PAGE REDIRECT
+               THANK-YOU PAGE
             */
 
             const currentPage =
@@ -1894,3 +2030,4 @@ showThankYouPage();
 
 </body>
 </html>
+```
