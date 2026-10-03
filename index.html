@@ -1,5 +1,3 @@
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -266,88 +264,140 @@ textarea {
 <div class="products">
 
 
+<!-- CHRISTUS STATUE -->
+
 <div class="product">
 <h3>Christus Statue</h3>
 <div class="price">$30.00</div>
+
 <button onclick="addToCart('Christus Statue', 30)">
 Add to Cart
 </button>
+
 </div>
 
+
+<!-- MORONI STATUE -->
 
 <div class="product">
 <h3>Moroni Statue</h3>
 <div class="price">$30.00</div>
+
 <button onclick="addToCart('Moroni Statue', 30)">
 Add to Cart
 </button>
+
 </div>
 
+
+<!-- SPIRAL FIDGET -->
 
 <div class="product">
 <h3>Spiral Fidget</h3>
 <div class="price">$5.50</div>
+
 <button onclick="addToCart('Spiral Fidget', 5.50)">
 Add to Cart
 </button>
+
 </div>
 
+
+<!-- ROCKTOPUS -->
 
 <div class="product">
 <h3>Rocktopus</h3>
 <div class="price">$8.00</div>
+
 <button onclick="addToCart('Rocktopus', 8)">
 Add to Cart
 </button>
+
 </div>
 
+
+<!-- ARTICULATED LEGS BOOKMARK -->
 
 <div class="product">
 <h3>Articulated Legs Bookmark</h3>
 <div class="price">$3.00</div>
+
 <button onclick="addToCart('Articulated Legs Bookmark', 3)">
 Add to Cart
 </button>
+
 </div>
 
+
+<!-- ARTICULATED DRAGON -->
 
 <div class="product">
 <h3>Articulated Dragon</h3>
 <div class="price">$25.00</div>
+
 <button onclick="addToCart('Articulated Dragon', 25)">
 Add to Cart
 </button>
+
 </div>
 
+
+<!-- FLOWER VASE -->
 
 <div class="product">
 <h3>Flower Vase</h3>
 <div class="price">$10.00</div>
+
 <button onclick="addToCart('Flower Vase', 10)">
 Add to Cart
 </button>
+
 </div>
 
+
+<!-- THE 67 FAMILY -->
 
 <div class="product">
 <h3>The 67 Family</h3>
 <div class="price">$6.70</div>
+
 <button onclick="addToCart('The 67 Family', 6.70)">
 Add to Cart
 </button>
+
 </div>
 
+
+<!-- BRONTHOR DESIGNS KEYCHAIN -->
 
 <div class="product">
 <h3>Bronthor Designs Keychain</h3>
 <div class="price">$1.00</div>
+
 <button onclick="addToCart('Bronthor Designs Keychain', 1)">
 Add to Cart
 </button>
-</div>
 
 </div>
 
+
+<!-- HAND GADGET -->
+
+<div class="product">
+<h3>HAND GADGET</h3>
+<div class="price">$12.00</div>
+
+<button onclick="addToCart('HAND GADGET', 12)">
+Add to Cart
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- CART -->
 
 <div class="cart">
 
@@ -358,11 +408,15 @@ Add to Cart
 </div>
 
 <div class="total">
+
 Items Total: $<span id="items-total">0.00</span>
-</div>
 
 </div>
 
+</div>
+
+
+<!-- CHECKOUT -->
 
 <div class="checkout">
 
@@ -375,11 +429,13 @@ method="POST"
 id="order-form"
 >
 
+
 <input
 type="hidden"
 name="_subject"
 value="New Bronthor Designs Order"
 >
+
 
 <input
 type="hidden"
@@ -387,11 +443,13 @@ name="_template"
 value="table"
 >
 
+
 <input
 type="hidden"
 name="_captcha"
 value="false"
 >
+
 
 <input
 type="hidden"
@@ -399,6 +457,8 @@ name="_next"
 id="next-page"
 >
 
+
+<!-- NAME -->
 
 <div class="form-group">
 
@@ -417,6 +477,8 @@ required
 </div>
 
 
+<!-- PHONE / EMAIL -->
+
 <div class="form-group">
 
 <label for="customer-contact">
@@ -433,6 +495,8 @@ required
 
 </div>
 
+
+<!-- ADDRESS -->
 
 <div
 class="form-group"
@@ -453,6 +517,8 @@ required
 </div>
 
 
+<!-- SHIPPING -->
+
 <div class="form-group">
 
 <label for="shipping">
@@ -469,23 +535,38 @@ required
 Select an option
 </option>
 
-<option value="Pick up - FREE" data-price="0">
+<option
+value="Pick up - FREE"
+data-price="0"
+>
 Pick up - FREE
 </option>
 
-<option value="0–1 hour Drive from Belmont North NSW 2280 - $5" data-price="5">
+<option
+value="0–1 hour Drive from Belmont North NSW 2280 - $5"
+data-price="5"
+>
 0–1 hour Drive from Belmont North NSW 2280 — $5
 </option>
 
-<option value="1–3 hours Drive from Belmont North NSW 2280 - $8" data-price="8">
+<option
+value="1–3 hours Drive from Belmont North NSW 2280 - $8"
+data-price="8"
+>
 1–3 hours Drive from Belmont North NSW 2280 — $8
 </option>
 
-<option value="3–5 hours Drive from Belmont North NSW 2280 - $12" data-price="12">
+<option
+value="3–5 hours Drive from Belmont North NSW 2280 - $12"
+data-price="12"
+>
 3–5 hours Drive from Belmont North NSW 2280 — $12
 </option>
 
-<option value="5+ hours Drive from Belmont North NSW 2280 - $15" data-price="15">
+<option
+value="5+ hours Drive from Belmont North NSW 2280 - $15"
+data-price="15"
+>
 5+ hours Drive from Belmont North NSW 2280 — $15
 </option>
 
@@ -494,7 +575,7 @@ Pick up - FREE
 </div>
 
 
-<!-- COLOUR SECTION -->
+<!-- COLOUR -->
 
 <div
 class="form-group"
@@ -587,6 +668,8 @@ Free BRONTHOR DESIGNS Keychain
 </div>
 
 
+<!-- ORDER SUMMARY -->
+
 <div class="form-group">
 
 <label>
@@ -602,6 +685,8 @@ Your cart is empty.
 
 </div>
 
+
+<!-- HIDDEN ORDER INFORMATION -->
 
 <input
 type="hidden"
@@ -712,11 +797,17 @@ let cart = [];
 ========================================= */
 
 const availableColours = [
+
     "White",
+
     "Silk White",
+
     "Copper Gold",
+
     "Blue/Red/Black Multicolour",
+
     "Grey Marble"
+
 ];
 
 
@@ -726,18 +817,15 @@ const availableColours = [
 
 function addToCart(name, price) {
 
-    const existingItem = cart.find(
-        item => item.name === name
-    );
+    const existingItem =
+        cart.find(
+            item => item.name === name
+        );
+
 
     if (existingItem) {
 
         existingItem.quantity++;
-
-        /*
-           Add a new individual colour slot
-           for the additional item.
-        */
 
         existingItem.colours.push("");
 
@@ -756,6 +844,7 @@ function addToCart(name, price) {
         });
 
     }
+
 
     updateCart();
 
@@ -783,7 +872,9 @@ function increaseQuantity(index) {
 
 function decreaseQuantity(index) {
 
-    if (cart[index].quantity > 1) {
+    if (
+        cart[index].quantity > 1
+    ) {
 
         cart[index].quantity--;
 
@@ -794,6 +885,7 @@ function decreaseQuantity(index) {
         cart.splice(index, 1);
 
     }
+
 
     updateCart();
 
@@ -808,6 +900,7 @@ function getItemsTotal() {
 
     let total = 0;
 
+
     cart.forEach(item => {
 
         total +=
@@ -815,6 +908,7 @@ function getItemsTotal() {
             item.quantity;
 
     });
+
 
     return total;
 
@@ -832,16 +926,19 @@ function getShippingPrice() {
             "shipping"
         );
 
+
     if (!shipping.value) {
 
         return 0;
 
     }
 
+
     const selected =
         shipping.options[
             shipping.selectedIndex
         ];
+
 
     return Number(
         selected.dataset.price || 0
@@ -851,7 +948,7 @@ function getShippingPrice() {
 
 
 /* =========================================
-   PICKUP ADDRESS
+   ADDRESS FIELD
 ========================================= */
 
 function updateAddressField() {
@@ -861,10 +958,12 @@ function updateAddressField() {
             "shipping"
         );
 
+
     const addressGroup =
         document.getElementById(
             "address-group"
         );
+
 
     const address =
         document.getElementById(
@@ -899,7 +998,7 @@ function updateAddressField() {
 
 
 /* =========================================
-   CREATE COLOUR OPTIONS
+   CREATE COLOUR SELECT
 ========================================= */
 
 function createColourSelect(
@@ -914,6 +1013,7 @@ function createColourSelect(
             "div"
         );
 
+
     wrapper.className =
         "product-colour-group";
 
@@ -922,6 +1022,7 @@ function createColourSelect(
         document.createElement(
             "label"
         );
+
 
     label.textContent =
         productName +
@@ -935,6 +1036,7 @@ function createColourSelect(
             "select"
         );
 
+
     select.required = true;
 
 
@@ -942,6 +1044,7 @@ function createColourSelect(
         document.createElement(
             "option"
         );
+
 
     blankOption.value = "";
 
@@ -962,8 +1065,10 @@ function createColourSelect(
                     "option"
                 );
 
+
             option.value =
                 colour;
+
 
             option.textContent =
                 colour;
@@ -995,15 +1100,23 @@ function createColourSelect(
             const keyParts =
                 uniqueKey.split("-");
 
+
             const cartIndex =
-                Number(keyParts[0]);
+                Number(
+                    keyParts[0]
+                );
+
 
             const colourIndex =
-                Number(keyParts[1]);
+                Number(
+                    keyParts[1]
+                );
 
 
             cart[cartIndex]
-                .colours[colourIndex] =
+                .colours[
+                    colourIndex
+                ] =
                 this.value;
 
 
@@ -1016,6 +1129,7 @@ function createColourSelect(
     wrapper.appendChild(
         label
     );
+
 
     wrapper.appendChild(
         select
@@ -1038,6 +1152,7 @@ function updateColourOptions() {
             "colour-options"
         );
 
+
     const mainLabel =
         document.getElementById(
             "colour-main-label"
@@ -1046,10 +1161,6 @@ function updateColourOptions() {
 
     colourOptions.innerHTML = "";
 
-
-    /*
-       No products
-    */
 
     if (cart.length === 0) {
 
@@ -1061,6 +1172,7 @@ function updateColourOptions() {
             document.createElement(
                 "select"
             );
+
 
         select.id =
             "single-colour";
@@ -1074,6 +1186,7 @@ function updateColourOptions() {
             document.createElement(
                 "option"
             );
+
 
         blank.value = "";
 
@@ -1094,11 +1207,14 @@ function updateColourOptions() {
                         "option"
                     );
 
+
                 option.value =
                     colour;
 
+
                 option.textContent =
                     colour;
+
 
                 select.appendChild(
                     option
@@ -1112,14 +1228,11 @@ function updateColourOptions() {
             select
         );
 
+
         return;
 
     }
 
-
-    /*
-       ONE INDIVIDUAL ITEM
-    */
 
     const totalIndividualItems =
         cart.reduce(
@@ -1128,6 +1241,8 @@ function updateColourOptions() {
             0
         );
 
+
+    /* ONE ITEM */
 
     if (
         totalIndividualItems === 1
@@ -1160,6 +1275,7 @@ function updateColourOptions() {
                 "option"
             );
 
+
         blank.value = "";
 
         blank.textContent =
@@ -1179,8 +1295,10 @@ function updateColourOptions() {
                         "option"
                     );
 
+
                 option.value =
                     colour;
+
 
                 option.textContent =
                     colour;
@@ -1212,6 +1330,7 @@ function updateColourOptions() {
                 cart[0].colours[0] =
                     this.value;
 
+
                 updateSummary();
 
             }
@@ -1228,9 +1347,7 @@ function updateColourOptions() {
     }
 
 
-    /*
-       TWO OR MORE INDIVIDUAL ITEMS
-    */
+    /* TWO OR MORE ITEMS */
 
     mainLabel.textContent =
         "Colours";
@@ -1277,7 +1394,7 @@ function updateColourOptions() {
 
 
 /* =========================================
-   CHECK ALL COLOURS
+   CHECK COLOURS
 ========================================= */
 
 function allColoursSelected() {
@@ -1326,7 +1443,7 @@ function allColoursSelected() {
 
 
 /* =========================================
-   CART DISPLAY
+   UPDATE CART
 ========================================= */
 
 function updateCart() {
@@ -1335,6 +1452,7 @@ function updateCart() {
         document.getElementById(
             "cart-items"
         );
+
 
     const itemsTotal =
         document.getElementById(
@@ -1347,8 +1465,10 @@ function updateCart() {
         cartItems.innerHTML =
             "<p>Your cart is empty.</p>";
 
+
         itemsTotal.textContent =
             "0.00";
+
 
         updateColourOptions();
 
@@ -1472,6 +1592,7 @@ function updateFreeGift() {
         giftBox.style.display =
             "block";
 
+
         gift.required =
             true;
 
@@ -1480,8 +1601,10 @@ function updateFreeGift() {
         giftBox.style.display =
             "none";
 
+
         gift.required =
             false;
+
 
         gift.value =
             "";
@@ -1507,6 +1630,7 @@ function updateSummary() {
 
         summaryBox.textContent =
             "Your cart is empty.";
+
 
         updateFreeGift();
 
@@ -1540,8 +1664,7 @@ function updateSummary() {
                     item.name +
                     " " +
                     itemNumber +
-                    " — " +
-                    "$" +
+                    " — $" +
                     item.price.toFixed(2) +
                     "\n";
 
@@ -1685,26 +1808,25 @@ document
         "submit",
         function(event) {
 
-            /*
-               CART CHECK
-            */
+
+            /* CART CHECK */
 
             if (cart.length === 0) {
 
                 event.preventDefault();
 
+
                 alert(
                     "Please add at least one item to your cart before submitting your order."
                 );
+
 
                 return;
 
             }
 
 
-            /*
-               SHIPPING CHECK
-            */
+            /* SHIPPING CHECK */
 
             const shipping =
                 document.getElementById(
@@ -1716,20 +1838,21 @@ document
 
                 event.preventDefault();
 
+
                 alert(
                     "Please select either Pick up or a delivery option."
                 );
 
+
                 shipping.focus();
+
 
                 return;
 
             }
 
 
-            /*
-               ADDRESS CHECK
-            */
+            /* ADDRESS CHECK */
 
             const address =
                 document.getElementById(
@@ -1745,37 +1868,38 @@ document
 
                 event.preventDefault();
 
+
                 alert(
                     "Please enter your shipping address."
                 );
 
+
                 address.focus();
+
 
                 return;
 
             }
 
 
-            /*
-               COLOUR CHECK
-            */
+            /* COLOUR CHECK */
 
             if (!allColoursSelected()) {
 
                 event.preventDefault();
 
+
                 alert(
                     "Please select a colour for every item in your cart."
                 );
+
 
                 return;
 
             }
 
 
-            /*
-               FREE GIFT CHECK
-            */
+            /* FREE GIFT CHECK */
 
             const itemsTotal =
                 getItemsTotal();
@@ -1794,20 +1918,21 @@ document
 
                 event.preventDefault();
 
+
                 alert(
                     "Please select your free gift."
                 );
 
+
                 freeGift.focus();
+
 
                 return;
 
             }
 
 
-            /*
-               SHIPPING PRICE
-            */
+            /* SHIPPING PRICE */
 
             const shippingPrice =
                 getShippingPrice();
@@ -1818,9 +1943,7 @@ document
                 shippingPrice;
 
 
-            /*
-               BUILD EMAIL SUMMARY
-            */
+            /* BUILD EMAIL SUMMARY */
 
             let summary = "";
 
@@ -1875,9 +1998,7 @@ document
                 "\n";
 
 
-            /*
-               ADDRESS
-            */
+            /* ADDRESS */
 
             if (
                 shipping.value ===
@@ -1915,9 +2036,7 @@ document
                 "\n";
 
 
-            /*
-               FREE GIFT
-            */
+            /* FREE GIFT */
 
             if (itemsTotal >= 50) {
 
@@ -1934,9 +2053,7 @@ document
             }
 
 
-            /*
-               SEND INFORMATION TO FORMSUBMIT
-            */
+            /* SEND INFORMATION */
 
             document
                 .getElementById(
@@ -1973,9 +2090,7 @@ document
                 summary;
 
 
-            /*
-               THANK-YOU PAGE
-            */
+            /* THANK YOU PAGE */
 
             const currentPage =
                 window.location.href.split("#")[0];
@@ -2030,4 +2145,3 @@ showThankYouPage();
 
 </body>
 </html>
-```
